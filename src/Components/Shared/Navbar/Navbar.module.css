@@ -1,12 +1,41 @@
+/** 
+ * File: Components/Shared/Navbar/Navbar.module.css
+ * Author: Yash Balotiya
+ * Description: This file contains the CSS module for the Navbar component.
+ * Created on: 01/03/2025
+ * Last Modified: 01/03/2025
+*/
+
+/* Main navbar */
 .navbar {
-    width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px 10px;
+    box-shadow: 0px 2px 4px -1px #00000033, 0px 4px 5px 0px rgba(0, 0, 0, 0.1), 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
 .logoDiv {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.searchDiv {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#searchInput {
+    width: 30vw;
+    height: 30px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 2px 8px;
+}
+
+.userIcon,
+.searchIcon {
+    width: 20px;
 }
