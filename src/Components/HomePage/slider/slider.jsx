@@ -22,7 +22,7 @@ const HomeSlider = () => {
 						<img src={slider1} alt="slider1" className= 's1-image'/>
 					</div>
 					<div className="item">
-						<img src={slider2} alt="slider1" className= 's2-image'/>
+						<img src={slider2} alt="slider1" className= 's1-image'/>
 					</div>
 						
 				</Slider>

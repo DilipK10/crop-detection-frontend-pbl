@@ -1,15 +1,11 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
 .homeSlider {
-    width: 100%;
+    width: 150vw;
     height: auto; /* Maintains aspect ratio */
-    display: block; /* Removes extra space below */
-}
-.homeSlider.home_slider_main{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 20%;
-  width: 100%;
-  padding: 50px 0px;
-}
+    display: flex; /* Removes extra space below */
+  }
+  .homeSlider img {
+    width: 100%;
+    height: auto;
+  }
