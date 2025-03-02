@@ -22,7 +22,7 @@ const Navbar = () => {
             {/* Logo section */}
             <div className={style.logoDiv}>
                 <img src={logo} alt="Crop Detection Logo" />
-                <h1>Crop Disease Detection</h1>
+                <h1>Crop Disease </h1>
             </div>
 
             {/* Search section */}
