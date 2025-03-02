@@ -1,9 +1,12 @@
 import React from "react";
 import  style from "./slider.module.css";
 import Slider from "react-slick";
+import slider1 from '../../../assets/images/slider-1.png';
+import slider2 from '../../../assets/images/slider-2.png';
 
 
-const homeSlider = () => {
+
+const HomeSlider = () => {
 	var settings = {
 		dots: true,
 		infinite: true,
@@ -12,23 +15,21 @@ const homeSlider = () => {
 		slidesToScroll: 1
 	  };
 		return (
-			<section classname = "home-slider">
+			<section classname = "homeSlider">
 				 <div classname = "cointainer-fluid "> 
-					<Slider {...settings}>
-						<div>
-							<img src = "https://images.unsplash.com/photo-1612835790406-4b6e8b4b7a8f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt = "slider1"/>
-						</div>
-						<div>
-							<img src = "https://images.unsplash.com/photo-1612835790406-4b6e8b4b7a8f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt = "slider2"/>
-						</div>
-						<div>
-							<img src = "https://images.unsplash.com/photo-1612835790406-4b6e8b4b7a8f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt = "slider3"/>
-						</div>
-					</Slider>
+				 <Slider {...settings} className="home_slider_main">
+					<div className="item">
+						<img src={slider1} alt="slider1" className= 's1-image'/>
+					</div>
+					<div className="item">
+						<img src={slider2} alt="slider1" className= 's2-image'/>
+					</div>
+						
+				</Slider>
 						
 				 </div>
 
 			 </section>
 		);
 }
-export default homeSlider;
+export default HomeSlider;
