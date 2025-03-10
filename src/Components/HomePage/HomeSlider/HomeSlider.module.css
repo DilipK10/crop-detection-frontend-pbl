@@ -1,0 +1,46 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
+
+.slick-slide[aria-hidden="true"] {
+    pointer-events: none;
+}
+
+.homeSlider {
+    width: 100%;
+    height: auto; /* Adjust height automatically */
+    padding: 15px 0px;
+}
+.home_slider_Main {
+    width: 100%;
+    height: auto;
+    max-height: 500px; /* Adjust as needed */
+    border-radius: 50px;
+    object-fit: cover;
+    overflow: hidden;
+    padding:0px 15px 20px 15px;
+    position: relative;
+}
+.home_slider_Main img {
+    width: 100%;
+    height: auto; /* Ensures proper scaling */
+    object-fit: contain; /* or 'cover' depending on your preference */
+}
+
+.slick-arrow {
+    position: absolute;
+    top: 47%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #861515;
+}
+/* Adjust arrow position */
+.slick-prev, .slick-next {
+    display: block !important;
+    z-index: 1000;
+}
+
+.slick-prev:before, .slick-next:before {
+    color: black !important; /* Change color if it's blending in */
+    font-size: 24px;
+}
