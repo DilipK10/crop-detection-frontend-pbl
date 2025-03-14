@@ -6,36 +6,52 @@
  * Last Modified: 01/03/2025
 */
 
+
 /* Main navbar */
+.hd{
+    font-size: 10px;
+    flex-direction: row;
+    white-space: nowrap;
+}
 .navbar {
     display: flex;
+    width:100vw;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 10px 10px;
     box-shadow: 0px 2px 4px -1px #00000033, 0px 4px 5px 0px rgba(0, 0, 0, 0.1), 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
 }
-
+.logo{
+    width:20px;
+   
+}
 .logoDiv {
     display: flex;
     align-items: center;
-    gap: 8px;
+    width :15px;
+    height:10px;
+    gap: 5px;
 }
 
 .searchDiv {
     display: flex;
     align-items: center;
-    gap: 8px;
+    width : 10px;
+    gap: 5px;
+    padding-right: 100px;
 }
 
 #searchInput {
-    width: 30vw;
-    height: 30px;
-    border: 1px solid lightgray;
+    
+    font-size: 10px;
+    height: 10px;
+    border: 1px solid rgb(147, 233, 139);
     border-radius: 5px;
-    padding: 2px 8px;
+    padding: 2px 8px 0px 8px;
 }
 
-.userIcon,
-.searchIcon {
-    width: 20px;
+.userIcon {
+    width: 10px;
+    padding-right: 25px;
 }

@@ -1,3 +1,34 @@
-.catSlider_main{
-  padding :50px 0px;
+.cointainer{
+  width: 100%;
+  display: flex;
+  position: relative;
+  margin :5px 5px 5px 5px;
+}
+.hd{
+  font-size: 20px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.swiper{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  margin: 10px;
+}
+.slide{
+  background-color: aquamarine;
+  border-radius: 15px;
+  width: 40px;
+  padding: 5px 5px 5px 5px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+
+}
+.category_image{
+  width: 100%;
+  border-radius: 50px;
+  object-fit: cover;
+  border-radius: 10px;
 }

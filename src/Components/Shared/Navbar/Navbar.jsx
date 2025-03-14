@@ -9,7 +9,7 @@
 // Importing Required Libraries
 import React from 'react';
 import style from './Navbar.module.css';
-import logo from '../../../assets/svgs/react.svg';
+import logo from '../../../assets/images/soil-monitoring.png';
 import userIcon from '../../../assets/svgs/user-solid.svg';
 import searchIcon from '../../../assets/svgs/searchengin-brands.svg';
 
@@ -21,8 +21,8 @@ const Navbar = () => {
 
             {/* Logo section */}
             <div className={style.logoDiv}>
-                <img src={logo} alt="Crop Detection Logo" />
-                <h1>Crop Disease </h1>
+                <img src={logo} className={style.logo} alt="Crop Detection Logo" />
+                <h1 className={style.hd}>Crop Disease </h1>
             </div>
 
             {/* Search section */}
