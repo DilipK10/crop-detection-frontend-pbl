@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Pagination, Navigation } from "swiper/modules";
+import { Pagination, Navigation ,Autoplay} from "swiper/modules";
 
 import image1 from "../../../assets/images/image1.jpg";
 import image2 from "../../../assets/images/img_2.jpg"; 
@@ -15,7 +15,12 @@ import image5 from "../../../assets/images/img_5.jpg";
 const categories = [
   { name: "Electronics", image: image1 },
   { name: "Fashion", image: image1 },
-  { name: "Home Decor", image: image1 },
+  { name: "HomeDecor", image: image1 },
+  { name: "Sports", image: image1 },
+  { name: "Toys", image: image1 },
+  { name: "Electronics", image: image2 },
+  { name: "Fashion", image: image1 },
+  { name: "HomeDecor", image: image1 },
   { name: "Sports", image: image1 },
   { name: "Toys", image: image1 },
 ];
@@ -25,10 +30,14 @@ const CategoriesSlider = () => {
     <div className={styles.container}>
         <h1 className={styles.hd}>Categories</h1>
       <Swiper
-        modules={[Pagination, Navigation]}
+        modules={[Pagination, Navigation,Autoplay]}
         spaceBetween={20}
-        slidesPerView={3} // Adjust as needed
+        slidesPerView={5} // Adjust as needed
         loop={true}
+        autoplay={{
+          delay: 3500,
+          disableOnInteraction: false,
+        }}
         className={styles.swiper}
       
       >

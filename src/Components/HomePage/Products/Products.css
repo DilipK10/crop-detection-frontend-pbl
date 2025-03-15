@@ -1,7 +1,7 @@
 .mainContainer{
-    margin-bottom: 200px;
+    /* margin-bottom: 10px;
     padding: 10px 0px;
-    margin-left: 5px ;
+    margin-left: 5px ; */
 }
 .hd{
     margin-bottom: 0;
@@ -34,14 +34,14 @@
 }
 .filterTab .cursor:hover{
     color: aquamarine;
-    transform: translateY(-10px);
+    transform: translateY(-20px);
 }
 .mainContainer .productRow{
     display: flex;
     flex-wrap: wrap;
-    padding: 20px 0px ;
-    margin: 5px 5px;
-    gap: 2px ;
+    padding: 10px 0px ;
+    /* margin: 5px 5px; */
+    gap: 8px ;
 }
 .mainContainer .productRow .item{
     width: 20%;
@@ -49,4 +49,7 @@
     padding: 0px 10px;
     margin-left: 5px;
 
+}
+.topProductSection{
+    padding: 20px 0px;
 }
