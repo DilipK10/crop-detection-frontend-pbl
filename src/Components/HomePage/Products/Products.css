@@ -6,6 +6,8 @@
 .hd{
     margin-bottom: 0;
     margin-top: 0;
+    display: inline;
+    white-space: nowrap;
 }
 .info{
     display: flex;
@@ -16,9 +18,35 @@
    display: flex;
    list-style: none;
    margin: 0;
-   padding: 0;
+   padding-right: 0px;
    justify-content: flex-end;
-   gap: 15px; /* Add space between items */
-    width: 100%; 
+   gap: 10px; /* Add space between items */
+    width: 100%;
+}
+.filterTab .list-inline-item {
+    display: inline-block; /* Ensure list items are inline */
+}
+.filterTab .cursor{
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    transition: all 0.3s ease-in-out;
+}
+.filterTab .cursor:hover{
+    color: aquamarine;
+    transform: translateY(-10px);
+}
+.mainContainer .productRow{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 0px ;
+    margin: 5px 5px;
+    gap: 2px ;
+}
+.mainContainer .productRow .item{
+    width: 20%;
+    /* background: rgb(157, 153, 153); */
+    padding: 0px 10px;
+    margin-left: 5px;
 
 }

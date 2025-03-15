@@ -1,0 +1,101 @@
+.productThumb {
+    width: 100%;
+    height: auto;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+/* Hot Badge */
+.hot-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ff4d6d;
+    color: white;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+/* Product Image */
+.productThumb img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* Information Section */
+.Information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+
+/* Brand */
+.brand {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+/* Product Title */
+.title {
+    font-size: 8px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Rating */
+.rating {
+    color: #ffc107;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+/* Price Section */
+.price-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #28a745;
+}
+
+/* Old Price */
+.old-price {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+}
+
+/* Buy Button */
+.Buy-1 {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;  /* Reduced padding for a smaller button */
+    font-size: 12px;  /* Smaller font size */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: auto;  /* Ensures the button fits within the container */
+    min-width: 50px;  /* Prevents excessive shrinking */
+}
+
+.Buy-1:hover {
+    background-color: #218838;
+}

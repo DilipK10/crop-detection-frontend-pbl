@@ -5,7 +5,11 @@
  * Created on: 01/03/2025
  * Last Modified: 01/03/2025
 */
-
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 /* Main navbar */
 .hd{
@@ -15,7 +19,7 @@
 }
 .navbar {
     display: flex;
-    width:100vw;
+    width:100%;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -31,7 +35,7 @@
     align-items: center;
     width :15px;
     height:10px;
-    gap: 5px;
+    gap: 0px;
 }
 
 .searchDiv {
@@ -39,19 +43,18 @@
     align-items: center;
     width : 10px;
     gap: 5px;
-    padding-right: 100px;
 }
 
 #searchInput {
-    
+    width: 70vw;
     font-size: 10px;
-    height: 10px;
+    height: 20px;
     border: 1px solid rgb(147, 233, 139);
     border-radius: 5px;
-    padding: 2px 8px 0px 8px;
+    padding: 2px ;
 }
 
 .userIcon {
     width: 10px;
-    padding-right: 25px;
+    /* padding-right: 25px; */
 }

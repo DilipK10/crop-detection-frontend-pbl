@@ -1,5 +1,6 @@
 import React from "react";
 import  './Products.css';
+import ProductData from "./component/ProductDetails";
 
 
 const Products = () =>{
@@ -7,22 +8,44 @@ const Products = () =>{
         <section className='mainContainer'>
            <div className="conitainer-fluid">
             <div className="info">
-            <h2 className='hd'>Products</h2>
+            <h2 className='hd'>Products Popular</h2>
             <ul className="filterTab ">
                 <li className="list-inline-item">
                     <a className="cursor" href="#">All</a>
                 </li>
                 <li className="list-inline-item">
-                    <a className="cursor" href="#">Milks & Dairies</a>
+                    <a className="cursor" href="#">Milk</a>
                 </li>
                 <li className="list-inline-item">
-                    <a className="cursor" href="#">Coffes & Teas</a>
+                    <a className="cursor" href="#">Coffes</a>
                 </li>
                 <li className="list-inline-item">
-                    <a className="cursor" href="#">Pet Foods</a>
+                    <a className="cursor" href="#">Foods</a>
                 </li>
             </ul>
+            
             </div>
+
+                <div className="productRow">
+                    <div className="item">
+                        <ProductData/>
+                    </div>
+                    <div className="item">
+                        <ProductData/>
+                    </div>
+                    <div className="item">
+                        <ProductData/>
+                    </div>
+                    <div className="item">
+                        <ProductData/>
+                    </div>
+                    <div className="item">
+                        <ProductData/>
+                    </div>
+                    
+                </div>
+
+     
            </div>
         </section>
     )
