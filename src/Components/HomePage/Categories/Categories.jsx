@@ -29,6 +29,7 @@ const CategoriesSlider = () => {
   return (
     <div className={styles.container}>
         <h1 className={styles.hd}>Categories</h1>
+        {/* <div className="underLine"></div> */}
       <Swiper
         modules={[Pagination, Navigation,Autoplay]}
         spaceBetween={20}

@@ -1,0 +1,111 @@
+/* Main Container */
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Heading */
+.heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Order List */
+.orderList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Order Card */
+.orderCard {
+    display: flex;
+    align-items: center;
+    background: #f8f9fc;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Hover Effect */
+.orderCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    background: #ffffff;
+}
+
+/* Product Image */
+.productImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+/* Order Details */
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Order ID */
+.orderId {
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+}
+
+/* Product Name */
+.productName {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+/* Price */
+.price {
+    font-size: 14px;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* Status Styles */
+.status {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: fit-content;
+}
+
+/* Status Colors */
+.delivered {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.shipped {
+    background-color: #f39c12;
+    color: white;
+}
+
+.processing {
+    background-color: #3498db;
+    color: white;
+}
+
+.cancelled {
+    background-color: #e74c3c;
+    color: white;
+}
+

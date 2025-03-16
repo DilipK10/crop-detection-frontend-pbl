@@ -14,7 +14,7 @@ const HomeSlider = () => {
       <Swiper
         modules={[Pagination, EffectCoverflow, Autoplay]}
         effect={"coverflow"}
-        grabCursor={true}
+        // grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
         coverflowEffect={{

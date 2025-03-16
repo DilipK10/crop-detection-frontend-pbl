@@ -11,6 +11,7 @@ const Products = () =>{
            <div className="conitainer-fluid">
             <div className="info">
             <h2 className='hd'>Products Popular</h2>
+            <div className="UnderLine"></div>
             <ul className="filterTab ">
                 <li className="list-inline-item">
                     <a className="cursor" href="#">All</a>

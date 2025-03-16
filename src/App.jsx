@@ -1,26 +1,32 @@
-import React from 'react'
-import  {BrowserRouter ,Routes,Route} from 'react-router-dom';
-import Navbar from './Components/Shared/Navbar/Navbar'
-import Home from './Components/HomePage/Home/Home'
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './Components/Shared/Navbar/Navbar';
+import Home from './Components/HomePage/Home/Home';
 import Footer from './Components/Shared/Footer/Footer';
-import ProductDescription from './Components/ProductDescription/ProductDescription'
+import ProductDescription from './Components/ProductDescription/ProductDescription';
+import ProductListing from './Components/ProductListing/ProductListing';
+import OrderHistory from './Components/orderDetails/OrderHistory/OrderHistory';
+import MyCart from './Components/orderDetails/my cart/MyCart';
+import styles from './App.module.css'; // Import the CSS
 
 const App = () => {
     return (
-	    <>
-        <BrowserRouter>
-            <Navbar/>
-            <Routes>
-            <Route exact={true} path='/' element={<Home/>}/>
-            <Route exact={true} path='/Description' element={<ProductDescription/>}/>
-            </Routes>
-            <Footer/>
-        </BrowserRouter>
-            
-            
-
-        </>
-    )
-}
+        <div className={styles.appContainer}>
+            <BrowserRouter>
+                <Navbar />
+                <div className={styles.mainContent}>
+                    <Routes>
+                        <Route exact path='/' element={<Home />} />
+                        <Route exact path='/Description' element={<ProductDescription />} />
+                        <Route exact path='/Listing' element={<ProductListing />} />
+                        <Route exact path='/history' element={<OrderHistory />} />
+                        <Route exact path='/cart' element={<MyCart />} />
+                    </Routes>
+                </div>
+                <Footer className={styles.footer} />
+            </BrowserRouter>
+        </div>
+    );
+};
 
 export default App;

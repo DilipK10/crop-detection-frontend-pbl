@@ -1,75 +1,117 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Main Navbar */
+/* Navbar Container */
 .navbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
     padding: 12px 20px;
-    background-color: #fff;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Logo Section */
 .logoDiv {
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
 .logo {
-    width: 40px;
-    height: auto;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
 }
 
 .hd {
-    font-size: 18px;
+    font-size: 20px;
+    color: #000000;
     font-weight: bold;
-    white-space: nowrap;
-    color: #333;
 }
 
-/* Search Bar */
+/* Navigation Links */
+.navLinks {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.navItem {
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Hover Effect */
+.navItem:hover {
+    color: #27ae60;
+    transform: scale(1.1);
+}
+
+/* Search Section */
 .searchDiv {
     display: flex;
     align-items: center;
-    border: 1px solid rgb(147, 233, 139);
-    border-radius: 5px;
-    padding: 4px;
-    width: 500px;
-    background: #f9f9f9;
+    background: #ffffff;
+    padding: 5px;
+    border-radius: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.searchInput {
+#searchInput {
     border: none;
     outline: none;
-    width: 100px;
+    padding: 8px 10px;
     font-size: 14px;
-    padding: 5px;
-    background: transparent;
+    width: 180px;
+    border-radius: 20px;
 }
 
 .searchIcon {
     width: 20px;
     height: 20px;
-    margin-left: 5px;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 }
 
-/* Icons */
+/* Hover Effect on Search Icon */
+.searchIcon:hover {
+    transform: scale(1.2);
+}
+
+/* Icons Section */
 .iconDiv {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-.userIcon, .qrIcon {
-    width: 20px;
-    height: 20px;
+.userIcon, .cartIcon {
+    width: 25px;
+    height: 25px;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 }
 
+/* Hover Effect on Icons */
+.userIcon:hover, .cartIcon:hover {
+    transform: scale(1.2);
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navLinks {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .searchDiv {
+        margin-top: 10px;
+    }
+}

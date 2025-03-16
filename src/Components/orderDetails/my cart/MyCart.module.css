@@ -1,0 +1,156 @@
+/* Cart Container */
+.cartContainer {
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #f8f9fc;
+    border-radius: 12px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Heading */
+.heading {
+    text-align: center;
+    font-size: 24px;
+    color: #2c3e50;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Empty Cart Message */
+.emptyCart {
+    text-align: center;
+    font-size: 16px;
+    color: #777;
+}
+
+.emptyCart a {
+    color: #27ae60;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.emptyCart a:hover {
+    text-decoration: underline;
+}
+
+/* Cart Items */
+.cartItems {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Cart Item */
+.cartItem {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.cartItem:hover {
+    transform: scale(1.02);
+}
+
+/* Item Image */
+.itemImage {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+/* Item Details */
+.itemDetails {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Item Name */
+.itemName {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Item Price */
+.itemPrice {
+    font-size: 14px;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* Quantity Selector */
+.quantitySelector {
+    margin-top: 5px;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Remove Button */
+.removeButton {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.removeButton:hover {
+    background-color: #c0392b;
+}
+
+/* Cart Summary */
+.cartSummary {
+    text-align: right;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+}
+
+/* Checkout Button */
+.checkoutButton {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.checkoutButton:hover {
+    background-color: #219150;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .cartItem {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .itemImage {
+        margin-bottom: 10px;
+    }
+
+    .quantitySelector {
+        width: 80px;
+        margin: auto;
+    }
+}

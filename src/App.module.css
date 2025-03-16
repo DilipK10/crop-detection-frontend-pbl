@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+body {
+    font-family: 'Poppins', sans-serif;
+}
+/* App.module.css */
+.appContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures full height of the viewport */
+}
+
+/* Main Content */
+.mainContent {
+    flex: 1; /* Takes up remaining space */
+}
+
+/* Footer */
+.footer {
+    background-color: #333; /* Dark background */
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
