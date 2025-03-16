@@ -13,6 +13,8 @@
     "@mui/material": "^6.4.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.3.0",
     "react-slick": "^0.30.3",
     "react-slideshow-image": "^4.3.2",
     "slick-carousel": "^1.8.1",

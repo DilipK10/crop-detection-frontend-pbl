@@ -5,6 +5,7 @@ import image2 from "../../../../assets/images/img_2.jpg";
 import image3 from "../../../../assets/images/img_3.jpg";
 import image4 from "../../../../assets/images/img_4.jpg";
 import image5 from "../../../../assets/images/img_5.jpg";
+import ProductDescription from "../../../ProductDescription/ProductDescription";
 
 const TopProduct = ({ title = "Top Products" }) => {
   const products = [
@@ -66,7 +67,7 @@ const TopProduct = ({ title = "Top Products" }) => {
               className={styles.productImage}
             />
             <div className={styles.productDetails}>
-              <h4 className={styles.productName}>{product.name}</h4>
+              <a className={styles.productName}href="#">{product.name}</a>
               <p className={styles.rating}>{product.rating}</p>
               <div className={styles.priceContainer}>
                 <p className={styles.price}>{product.price}</p>

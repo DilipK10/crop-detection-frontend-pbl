@@ -12,7 +12,7 @@ const ProductData = () =>{
                 <h5 className="brand">snack</h5>
                 <h4 className="title">organic </h4>
                 <h6 className="price">$100</h6>
-                <button className="Buy-1">Buy</button>
+                <button className="Buy-1" onClick="#">Buy</button>
             </div>
            
            

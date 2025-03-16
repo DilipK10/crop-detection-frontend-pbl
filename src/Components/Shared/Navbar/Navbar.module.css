@@ -1,60 +1,75 @@
-/** 
- * File: Components/Shared/Navbar/Navbar.module.css
- * Author: Yash Balotiya
- * Description: This file contains the CSS module for the Navbar component.
- * Created on: 01/03/2025
- * Last Modified: 01/03/2025
-*/
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Main navbar */
-.hd{
-    font-size: 10px;
-    flex-direction: row;
-    white-space: nowrap;
-}
+/* Main Navbar */
 .navbar {
     display: flex;
-    width:100%;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 10px;
-    box-shadow: 0px 2px 4px -1px #00000033, 0px 4px 5px 0px rgba(0, 0, 0, 0.1), 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+    padding: 12px 20px;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
-.logo{
-    width:20px;
-   
-}
+
+/* Logo Section */
 .logoDiv {
     display: flex;
     align-items: center;
-    width :15px;
-    height:10px;
-    gap: 0px;
+    gap: 10px;
 }
 
+.logo {
+    width: 40px;
+    height: auto;
+}
+
+.hd {
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+    color: #333;
+}
+
+/* Search Bar */
 .searchDiv {
     display: flex;
     align-items: center;
-    width : 10px;
-    gap: 5px;
-}
-
-#searchInput {
-    width: 70vw;
-    font-size: 10px;
-    height: 20px;
     border: 1px solid rgb(147, 233, 139);
     border-radius: 5px;
-    padding: 2px ;
+    padding: 4px;
+    width: 500px;
+    background: #f9f9f9;
 }
 
-.userIcon {
-    width: 10px;
-    /* padding-right: 25px; */
+.searchInput {
+    border: none;
+    outline: none;
+    width: 100px;
+    font-size: 14px;
+    padding: 5px;
+    background: transparent;
 }
+
+.searchIcon {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
+/* Icons */
+.iconDiv {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.userIcon, .qrIcon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+

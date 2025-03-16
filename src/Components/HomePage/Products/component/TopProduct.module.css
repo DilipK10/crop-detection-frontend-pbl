@@ -65,7 +65,13 @@
     font-size: 14px;
     font-weight: bold;
     color: #1a1a1a;
+    text-decoration: none;
+    cursor: pointer;
 }
+.productName a :hover{
+    background-color: #27ae60;
+}
+
 
 /* Rating */
 .rating {

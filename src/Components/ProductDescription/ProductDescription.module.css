@@ -1,0 +1,143 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding: 20px;
+  }
+  
+  .productCard {
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 1000px;
+    padding: 15px;
+  }
+  
+  .imageSection {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .productImage {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 6px;
+  }
+  
+  .detailsSection {
+    flex: 2;
+    padding: 10px;
+  }
+  
+  .saleBadge {
+    background: red;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  
+  .productTitle {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 8px 0;
+  }
+  
+  .reviews {
+    color: gold;
+    font-size: 12px;
+  }
+  
+  .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: green;
+  }
+  
+  .oldPrice {
+    text-decoration: line-through;
+    color: gray;
+    margin-left: 6px;
+    font-size: 12px;
+  }
+  
+  .discount {
+    color: red;
+    font-size: 12px;
+    margin-left: 6px;
+  }
+  
+  .description {
+    color: #555;
+    font-size: 12px;
+    margin: 10px 0;
+  }
+  
+  .sizeSelector {
+    margin-top: 5px;
+  }
+  
+  .sizeButton {
+    padding: 6px 10px;
+    margin: 3px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    background: white;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  
+  .selectedSize {
+    background: green;
+    color: white;
+    border: none;
+  }
+  
+  .cartActions {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .quantitySelect {
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-right: 8px;
+    font-size: 12px;
+  }
+  
+  .addToCart {
+    background: green;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .iconButton {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 6px;
+    margin-left: 6px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .productInfo {
+    margin-top: 15px;
+    font-size: 12px;
+  }
+  
+  .productInfo p {
+    margin: 4px 0;
+  }
+  
