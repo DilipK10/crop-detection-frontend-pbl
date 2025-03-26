@@ -19,7 +19,7 @@ const Navbar = () => {
             <ul className={style.navLinks}>
                 <li><Link to="/" className={style.navItem}>Home</Link></li>
                 <li><Link to="/about" className={style.navItem}>About Us</Link></li>
-                <li><Link to="/profile" className={style.navItem}>My Profile</Link></li>
+                <li><Link to="/co" className={style.navItem}>Consultant</Link></li>
                 <li><Link to="/cart" className={style.navItem}>Cart</Link></li>
             </ul>
 
@@ -32,7 +32,7 @@ const Navbar = () => {
             {/* Icons Section */}
             <div className={style.iconDiv}>
                 <img src={userIcon} className={style.userIcon} alt="User Icon" />
-                <img src={cartIcon} className={style.cartIcon} alt="Cart Icon" />
+                <img src={cartIcon} className={style.cartIcon}  alt="Cart Icon" />
             </div>
         </nav>
     );

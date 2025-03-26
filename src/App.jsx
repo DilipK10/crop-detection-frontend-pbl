@@ -7,6 +7,8 @@ import ProductDescription from './Components/ProductDescription/ProductDescripti
 import ProductListing from './Components/ProductListing/ProductListing';
 import OrderHistory from './Components/orderDetails/OrderHistory/OrderHistory';
 import MyCart from './Components/orderDetails/my cart/MyCart';
+import ConsultantListing from './Components/Consultant/Consultant';
+import ConsultantDetail from './Components/Consultant/Details/ConsultantDetail';
 import styles from './App.module.css'; // Import the CSS
 
 const App = () => {
@@ -21,6 +23,8 @@ const App = () => {
                         <Route exact path='/Listing' element={<ProductListing />} />
                         <Route exact path='/history' element={<OrderHistory />} />
                         <Route exact path='/cart' element={<MyCart />} />
+                        <Route path="/co" element={<ConsultantListing />} />
+                        <Route path="/consultant/:id" element={<ConsultantDetail />} />
                     </Routes>
                 </div>
                 <Footer className={styles.footer} />

@@ -1,12 +1,13 @@
 import React from "react";
 import "./ProductData.css";
+import i1 from '../../../../assets/images/img_3.jpg'
 
 
 const ProductData = () =>{
     return(
         <div className="productThumb">
             <div className="imgWrapper">
-                <img src="https://nest-frontend-v6.vercel.app/assets/imgs/shop/product-1-2.jpg" className="i-1"></img>
+                <img src= {i1} className="i-1"></img>
             </div>
             <div className="Information">
                 <h5 className="brand">snack</h5>
