@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../CartContext";
@@ -57,6 +57,7 @@ const ProductDescription = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const product = products.find((p) => p.id === Number(id));
+  const { addToCart } = useContext(CartContext);
   
 
   if (!product) {
@@ -75,7 +76,20 @@ const ProductDescription = () => {
   const [reviewName, setReviewName] = useState("");
   const [reviewComment, setReviewComment] = useState("");
 
-  const addToCart = () => {
+  const handleAddToCart = () => {
+    // Convert price string to number (remove $ sign)
+    const priceValue = parseFloat(product.price.replace('$', ''));
+    
+    const cartItem = {
+      id: product.id,
+      name: product.name,
+      image: selectedImage,
+      price: priceValue,
+      quantity: quantity,
+      size: selectedSize
+    };
+    
+    addToCart(cartItem);
     alert(`Added ${quantity} item(s) of ${selectedSize} to cart!`);
     navigate("/cart");
   };
@@ -131,7 +145,7 @@ const ProductDescription = () => {
                 <option key={num + 1} value={num + 1}>{num + 1}</option>
               ))}
             </select>
-            <button className={styles.addToCart} onClick={addToCart}>🛒 Add to Cart</button>
+            <button className={styles.addToCart} onClick={handleAddToCart}>🛒 Add to Cart</button>
             <button className={styles.iconButton}>♡</button>
             <button className={styles.iconButton}>⇄</button>
           </div>

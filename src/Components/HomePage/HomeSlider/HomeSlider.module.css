@@ -1,9 +1,8 @@
-
 .container{
     padding: 5px;
     overflow: hidden;
     padding: 15px;
- 
+    position: relative;
 }
 .slide_info{
     display: flex;
@@ -13,6 +12,30 @@
 .slideImage{
     width:100%;
     border-radius: 10px;
+}
+
+/* Navigation buttons */
+.swiperButtonPrev,
+.swiperButtonNext {
+    color: #fff !important;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiperButtonPrev:after,
+.swiperButtonNext:after {
+    font-size: 18px !important;
+    font-weight: bold;
+}
+
+.swiperButtonPrev:hover,
+.swiperButtonNext:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 

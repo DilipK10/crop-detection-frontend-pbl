@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import styles from "./ProductListing.module.css";
 import ProductCard from "./ProductCard/ProductCard"; // Reusable component
 import image1 from "../../assets/images/image1.jpg";
@@ -30,9 +31,27 @@ const productsData = [
   { id: 20, name: "Foster Farms Crispy Buffalo Wings", image: image5, rating: "⭐⭐⭐⭐ (4.0)", price: "$32.85", oldPrice: "$33.8", category: "Frozen" },
 ];
 
+// Get unique categories from products
+const getUniqueCategories = () => {
+  const categories = productsData.map(product => product.category);
+  return [...new Set(categories)];
+};
+
 const ProductListing = ({ title = "Product Listing" }) => {
+  const location = useLocation();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const uniqueCategories = getUniqueCategories();
+
+  // Parse URL parameters for category
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const categoryParam = params.get('category');
+    
+    if (categoryParam && uniqueCategories.includes(categoryParam)) {
+      setSelectedCategory(categoryParam);
+    }
+  }, [location.search, uniqueCategories]);
 
   const filteredProducts = productsData.filter((product) => 
     product.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
@@ -60,10 +79,11 @@ const ProductListing = ({ title = "Product Listing" }) => {
           className={styles.categoryFilter}
         >
           <option value="All">All Categories</option>
-          <option value="Beverages">Beverages</option>
-          <option value="Dairy">Dairy</option>
-          <option value="Grains">Grains</option>
-          <option value="Frozen">Frozen</option>
+          {uniqueCategories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
         </select>
       </div>
 

@@ -69,3 +69,20 @@
     color: #999;
     text-decoration: line-through;
 }
+
+/* Add to Cart Button */
+.addToCartButton {
+    margin-top: 8px;
+    padding: 5px 10px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.addToCartButton:hover {
+    background-color: #219653;
+}

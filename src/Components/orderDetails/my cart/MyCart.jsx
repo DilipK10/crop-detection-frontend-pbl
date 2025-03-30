@@ -1,50 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styles from './MyCart.module.css';
 import { Link } from 'react-router-dom';
-import image1 from "../../../assets/images/image1.jpg";
-import image2 from "../../../assets/images/img_2.jpg";
-import image3 from "../../../assets/images/img_3.jpg";
-import image4 from "../../../assets/images/img_4.jpg";
-import image5 from "../../../assets/images/img_5.jpg";
-
-// Sample Cart Products (You can replace this with dynamic cart data)
-const initialCart = [
-    {
-        id: 1,
-        name: "Nestle Original Coffee-Mate Coffee Creamer",
-        image: image1,
-        price: 32.85,
-        quantity: 1
-    },
-    {
-        id: 2,
-        name: "Organic Cage-Free Grade A Large Brown Eggs",
-        image: image2,
-        price: 28.50,
-        quantity: 1
-    },
-    {
-        id: 3,
-        name: "Seeds of Change Organic Quinoa",
-        image: image3,
-        price: 18.99,
-        quantity: 1
-    }
-];
+import { CartContext } from '../../../CartContext';
 
 const MyCart = () => {
-    const [cart, setCart] = useState(initialCart);
+    const { cart, addToCart, removeFromCart } = useContext(CartContext);
 
     // Handle Quantity Change
-    const updateQuantity = (id, quantity) => {
-        setCart(cart.map(item => 
-            item.id === id ? { ...item, quantity: Number(quantity) } : item
-        ));
-    };
-
-    // Handle Remove Item
-    const removeItem = (id) => {
-        setCart(cart.filter(item => item.id !== id));
+    const updateQuantity = (item, quantity) => {
+        // Create a new item with updated quantity
+        const updatedItem = { ...item, quantity: Number(quantity) };
+        
+        // Remove the old item and add the updated one
+        removeFromCart(item.id);
+        addToCart(updatedItem);
     };
 
     // Calculate Total Price
@@ -64,16 +33,17 @@ const MyCart = () => {
                             <div className={styles.itemDetails}>
                                 <p className={styles.itemName}>{item.name}</p>
                                 <p className={styles.itemPrice}>${item.price.toFixed(2)}</p>
+                                {item.size && <p className={styles.itemSize}>Size: {item.size}</p>}
                                 <select 
                                     value={item.quantity} 
-                                    onChange={(e) => updateQuantity(item.id, e.target.value)}
+                                    onChange={(e) => updateQuantity(item, e.target.value)}
                                     className={styles.quantitySelector}
                                 >
                                     {[...Array(10).keys()].map(num => (
                                         <option key={num + 1} value={num + 1}>{num + 1}</option>
                                     ))}
                                 </select>
-                                <button className={styles.removeButton} onClick={() => removeItem(item.id)}>❌ Remove</button>
+                                <button className={styles.removeButton} onClick={() => removeFromCart(item.id)}>❌ Remove</button>
                             </div>
                         </div>
                     ))}
