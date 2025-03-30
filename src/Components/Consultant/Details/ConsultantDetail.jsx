@@ -51,6 +51,17 @@ const ConsultantDetail = () => {
       alert("Please select both date and time!");
       return;
     }
+  
+    const newBooking = {
+      consultantName: consultant.name,
+      date: selectedDate,
+      time: selectedTime,
+    };
+  
+    const existingBookings = JSON.parse(localStorage.getItem("consultantBookings")) || [];
+    existingBookings.push(newBooking);
+    localStorage.setItem("consultantBookings", JSON.stringify(existingBookings));
+  
     alert(`Booking confirmed with ${consultant.name} on ${selectedDate} at ${selectedTime}`);
     setShowModal(false);
   };

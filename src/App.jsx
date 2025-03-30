@@ -9,6 +9,7 @@ import OrderHistory from './Components/orderDetails/OrderHistory/OrderHistory';
 import MyCart from './Components/orderDetails/my cart/MyCart';
 import ConsultantListing from './Components/Consultant/Consultant';
 import ConsultantDetail from './Components/Consultant/Details/ConsultantDetail';
+import ConsultantHistory from './Components/Consultant/history/ConsultantHistory';
 import { CartProvider } from "./CartContext";
 import styles from './App.module.css'; // Import the CSS
 
@@ -27,6 +28,7 @@ const App = () => {
                         <Route exact path='/cart' element={<MyCart />} />
                         <Route path="/co" element={<ConsultantListing />} />
                         <Route path="/consultant/:id" element={<ConsultantDetail />} />
+                        <Route path="/consultant-history" element={<ConsultantHistory />} />
                     </Routes>
                     </CartProvider>
                 </div>

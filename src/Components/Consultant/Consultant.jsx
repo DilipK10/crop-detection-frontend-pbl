@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Consultant.module.css"; // Using module-based CSS
-import img1 from "../../assets/images/co.png"
-
+import img1 from "../../assets/images/co.png";
 
 const consultants = [
   {
@@ -10,7 +9,7 @@ const consultants = [
     name: "Dr. Ananya Sharma",
     experience: "10+ Years",
     expertise: "Organic Farming & Sustainable Agriculture",
-    image: img1, // Replace with actual image
+    image: img1,
   },
   {
     id: 2,
@@ -33,12 +32,16 @@ const consultants = [
     expertise: "Agricultural Technology & Innovation",
     image: img1,
   },
-];
-
-const ConsultantListing = () => {
+];const ConsultantListing = () => {
   return (
     <div className={styles.consultantList}>
-      <h2 className={styles.consultantTitle}>Our Expert Consultants</h2>
+      <div className={styles.headerContainer}>
+        <h2 className={styles.consultantTitle}>Our Expert Consultants</h2>
+        <Link to="/consultant-history" className={styles.historyBtn}>
+          📜 Consultation History
+        </Link>
+      </div>
+
       <div className={styles.consultantContainer}>
         {consultants.map((consultant) => (
           <div className={styles.consultantCard} key={consultant.id}>
@@ -57,5 +60,6 @@ const ConsultantListing = () => {
     </div>
   );
 };
+
 
 export default ConsultantListing;

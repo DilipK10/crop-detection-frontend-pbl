@@ -1,85 +1,120 @@
-/* Consultant Listing Container */
+/* Consultant List Container */
 .consultantList {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #adf1b7;
-    border-radius: 10px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #adf1b7;
+  border-radius: 10px;
+}
+
+/* Header container for title and history button */
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Consultant Title */
+.consultantTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Consultant Cards Container */
+.consultantContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Consultant Card */
+.consultantCard {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+.consultantCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Consultant Image */
+.consultantImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 15px;
+  object-fit: cover;
+}
+
+/* Consultant Details */
+.consultantDetails {
+  flex-grow: 1;
+}
+
+/* Consultant Name */
+.consultantName {
+  font-size: 18px;
+  color: #333;
+}
+
+/* Consultant Experience & Expertise */
+.consultantExperience, .consultantExpertise {
+  font-size: 14px;
+  color: #666;
+}
+
+/* View Details Button */
+.detailsBtn {
+  display: inline-block;
+  padding: 8px 15px;
+  background: green;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.detailsBtn:hover {
+  background: darkgreen;
+}
+
+/* History Button */
+.historyBtn {
+  padding: 10px 15px;
+  background: #007bff;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.historyBtn:hover {
+  background: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .headerContainer {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
   }
-  
-  /* Title */
-  .consultantTitle {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
+
+  .historyBtn {
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
   }
-  
-  /* Consultant Cards Container */
-  .consultantContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  /* Consultant Card */
-  .consultantCard {
-    display: flex;
-    align-items: center;
-    background: #fff;
-    border-radius: 15px;
-    padding: 15px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  /* Hover Effect */
-  .consultantCard:hover {
-    transform: translateY(-3px);
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Consultant Image */
-  .consultantImage {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-right: 15px;
-    object-fit: cover;
-  }
-  
-  /* Consultant Details */
-  .consultantDetails {
-    flex-grow: 1;
-  }
-  
-  .consultantName {
-    font-size: 18px;
-    margin: 0;
-    color: #333;
-  }
-  
-  .consultantExperience,
-  .consultantExpertise {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #666;
-  }
-  
-  /* Button Styles */
-  .detailsBtn {
-    display: inline-block;
-    padding: 8px 15px;
-    background: green;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s;
-  }
-  
-  .detailsBtn:hover {
-    background: darkgreen;
-  }
-  
+}
