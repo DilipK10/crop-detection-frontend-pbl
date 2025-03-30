@@ -1,3 +1,4 @@
+/* Container */
 .productThumb {
     width: 100%;
     height: auto;
@@ -10,19 +11,6 @@
     text-align: center;
     position: relative;
     gap: 10px;
-}
-
-/* Hot Badge */
-.hot-badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: #ff4d6d;
-    color: white;
-    font-size: 12px;
-    padding: 3px 8px;
-    border-radius: 12px;
-    font-weight: bold;
 }
 
 /* Product Image */
@@ -41,16 +29,9 @@
     padding: 15px;
 }
 
-/* Brand */
-.brand {
-    font-size: 12px;
-    color: #888;
-    margin-bottom: 5px;
-}
-
 /* Product Title */
 .title {
-    font-size: 8px;
+    font-size: 14px;
     font-weight: bold;
     color: #333;
     margin-bottom: 5px;
@@ -59,44 +40,49 @@
     text-overflow: ellipsis;
 }
 
-/* Rating */
-.rating {
-    color: #ffc107;
-    font-size: 12px;
-    margin-bottom: 5px;
-}
-
-/* Price Section */
-.price-section {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* Price */
+.price {
     font-size: 16px;
     font-weight: bold;
     color: #28a745;
+    margin-bottom: 8px;
 }
 
-/* Old Price */
-.old-price {
-    font-size: 14px;
-    color: #999;
-    text-decoration: line-through;
+/* Buttons Group */
+.buttonGroup {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
 }
 
-/* Buy Button */
-.Buy-1 {
-    background-color: #28a745;
+/* View Details Button */
+.viewDetails {
+    background-color: #007bff;
     color: white;
     border: none;
-    padding: 5px 10px;  /* Reduced padding for a smaller button */
-    font-size: 12px;  /* Smaller font size */
+    padding: 8px 12px;
+    font-size: 12px;
     border-radius: 4px;
     cursor: pointer;
     transition: background 0.3s;
-    width: auto;  /* Ensures the button fits within the container */
-    min-width: 50px;  /* Prevents excessive shrinking */
 }
 
-.Buy-1:hover {
+.viewDetails:hover {
+    background-color: #0056b3;
+}
+
+/* Add to Cart Button */
+.addToCart {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.addToCart:hover {
     background-color: #218838;
 }

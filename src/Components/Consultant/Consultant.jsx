@@ -19,6 +19,20 @@ const consultants = [
     expertise: "Agricultural Technology & Innovation",
     image: img1,
   },
+  {
+    id: 3,
+    name: "Yash Shrama",
+    experience: "8+ Years",
+    expertise: "Agricultural Technology & Innovation",
+    image: img1,
+  },
+  {
+    id: 4,
+    name: "Rajesh Verma",
+    experience: "8+ Years",
+    expertise: "Agricultural Technology & Innovation",
+    image: img1,
+  },
 ];
 
 const ConsultantListing = () => {

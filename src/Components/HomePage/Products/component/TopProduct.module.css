@@ -30,7 +30,7 @@
 /* Product Item */
 .productItem {
     display: flex;
-    align-items: center;
+    align-items: center;  /* Align image and text properly */
     background: #f8f9fc;
     border-radius: 12px;
     padding: 10px;
@@ -47,19 +47,23 @@
 
 /* Product Image */
 .productImage {
-    width: 60px;
-    height: 60px;
+    width: 80px;  /* Adjust size as needed */
+    height: 80px;
     border-radius: 10px;
     object-fit: cover;
     margin-right: 15px;
+    flex-shrink: 0;  /* Prevent image from shrinking */
 }
 
 /* Product Details */
 .productDetails {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;  /* Allow details to expand fully */
 }
-
+.productLink{
+    text-decoration: none;
+}
 /* Product Name */
 .productName {
     font-size: 14px;

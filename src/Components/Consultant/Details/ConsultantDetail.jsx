@@ -18,6 +18,21 @@ const consultants = {
     qualification: "MSc in Agricultural Technology, AI in Farming Specialist",
     image: img1,
   },
+   3:{
+    name: " Yash Sharma",
+    description:
+      "Dr. Yash Sharma is an expert in organic farming with over 10 years of experience in sustainable agriculture. She has helped numerous farmers improve soil health and increase productivity through eco-friendly techniques.",
+    qualification: "PhD in Agricultural Science, Certified Organic Farming Expert",
+    image: img1, // Replace with actual image
+  },
+  4: {
+    name: "Rajesh Verma",
+    description:
+      "Rajesh Verma specializes in agricultural technology and innovation. With over 8 years of experience, he has introduced modern AI-based disease detection systems to help farmers maximize yield.",
+    qualification: "MSc in Agricultural Technology, AI in Farming Specialist",
+    image: img1,
+  },
+  
 };
 
 const ConsultantDetail = () => {

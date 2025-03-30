@@ -9,6 +9,7 @@ import OrderHistory from './Components/orderDetails/OrderHistory/OrderHistory';
 import MyCart from './Components/orderDetails/my cart/MyCart';
 import ConsultantListing from './Components/Consultant/Consultant';
 import ConsultantDetail from './Components/Consultant/Details/ConsultantDetail';
+import { CartProvider } from "./CartContext";
 import styles from './App.module.css'; // Import the CSS
 
 const App = () => {
@@ -17,15 +18,17 @@ const App = () => {
             <BrowserRouter>
                 <Navbar />
                 <div className={styles.mainContent}>
+                    <CartProvider>
                     <Routes>
                         <Route exact path='/' element={<Home />} />
-                        <Route exact path='/Description' element={<ProductDescription />} />
+                        <Route exact path='/product/:id' element={<ProductDescription />} />
                         <Route exact path='/Listing' element={<ProductListing />} />
                         <Route exact path='/history' element={<OrderHistory />} />
                         <Route exact path='/cart' element={<MyCart />} />
                         <Route path="/co" element={<ConsultantListing />} />
                         <Route path="/consultant/:id" element={<ConsultantDetail />} />
                     </Routes>
+                    </CartProvider>
                 </div>
                 <Footer className={styles.footer} />
             </BrowserRouter>
