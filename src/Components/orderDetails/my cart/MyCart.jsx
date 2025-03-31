@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import styles from './MyCart.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CartContext } from '../../../CartContext';
 
 const MyCart = () => {
+    const navigate = useNavigate();
     const { cart, addToCart, removeFromCart } = useContext(CartContext);
 
     // Handle Quantity Change
@@ -18,6 +19,15 @@ const MyCart = () => {
 
     // Calculate Total Price
     const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+
+    // Handle Checkout
+    const handleCheckout = () => {
+        if (cart.length === 0) {
+            alert('Your cart is empty!');
+            return;
+        }
+        navigate('/checkout');
+    };
 
     return (
         <div className={styles.cartContainer}>
@@ -51,7 +61,9 @@ const MyCart = () => {
                     {/* Total Price Section */}
                     <div className={styles.cartSummary}>
                         <h3>Total: ${totalPrice}</h3>
-                        <button className={styles.checkoutButton}>Proceed to Checkout</button>
+                        <button className={styles.checkoutButton} onClick={handleCheckout}>
+                            Proceed to Checkout
+                        </button>
                     </div>
                 </div>
             )}

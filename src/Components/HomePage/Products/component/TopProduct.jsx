@@ -8,19 +8,25 @@ import image4 from "../../../../assets/images/img_4.jpg";
 import image5 from "../../../../assets/images/img_5.jpg";
 
 const TopProduct = ({ title = "Top Products" }) => {
-  const products = [
-    { id: 1, name: "Nestle Original Coffee-Mate Coffee Creamer", image: image1, rating: "⭐⭐⭐⭐ (4.0)", price: "$32.85", oldPrice: "$33.8" },
-    { id: 2, name: "Organic Cage-Free Grade A Large Brown Eggs", image: image2, rating: "⭐⭐⭐⭐ (4.0)", price: "$32.85", oldPrice: "$33.8" },
-    { id: 3, name: "Seeds of Change Organic Quinoa", image: image3, rating: "⭐⭐⭐⭐ (4.0)", price: "$32.85", oldPrice: "$33.8" },
-    { id: 4, name: "Naturally Flavored Cinnamon Vanilla Light Roast Coffee", image: image4, rating: "⭐⭐⭐⭐ (4.0)", price: "$32.85", oldPrice: "$33.8" },
-    { id: 5, name: "Foster Farms Takeout Crispy Classic Buffalo Wings", image: image5, rating: "⭐⭐⭐⭐ (4.0)", price: "$32.85", oldPrice: "$33.8" },
-  ];
+  // Different products based on the title
+  const productLists = {
+    "Top Seller": [
+      { id: 1, name: "Nestle Original Coffee-Mate Coffee Creamer", image: image1, rating: "⭐⭐⭐⭐ (4.0)", price: "$32.85", oldPrice: "$33.8" },
+      { id: 2, name: "Organic Cage-Free Grade A Large Brown Eggs", image: image2, rating: "⭐⭐⭐⭐ (4.0)", price: "$32.85", oldPrice: "$33.8" },
+      { id: 3, name: "Seeds of Change Organic Quinoa", image: image3, rating: "⭐⭐⭐⭐ (4.0)", price: "$32.85", oldPrice: "$33.8" },
+    ],
+    "New Arrival": [
+      { id: 4, name: "Naturally Flavored Cinnamon Vanilla Light Roast Coffee", image: image4, rating: "⭐⭐⭐⭐ (4.0)", price: "$32.85", oldPrice: "$33.8" },
+      { id: 5, name: "Foster Farms Takeout Crispy Classic Buffalo Wings", image: image5, rating: "⭐⭐⭐⭐ (4.0)", price: "$32.85", oldPrice: "$33.8" },
+      { id: 6, name: "Organic Green Tea Matcha", image: image1, rating: "⭐⭐⭐⭐⭐ (5.0)", price: "$24.99", oldPrice: "$29.99" },
+    ]
+  };
+
+  // Use the appropriate product list based on the title prop
+  const products = productLists[title] || productLists["Top Seller"];
 
   return (
     <div className={styles.container}>
-      <h3 className={styles.heading}>{title}</h3>
-      <div className={styles.underline}></div>
-
       <div className={styles.products}>
         {products.map((product) => (
           <div key={product.id} className={styles.productItem}>

@@ -99,23 +99,35 @@
 }
 
 .sizeSelector {
-  margin-top: 5px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .sizeButton {
-  padding: 6px 10px;
-  margin: 3px;
+  padding: 8px 15px;
   border: 1px solid #ddd;
-  cursor: pointer;
   background: white;
+  cursor: pointer;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 14px;
+  min-width: 60px;
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
 .selectedSize {
-  background: green;
-  color: white;
-  border: none;
+  padding: 8px 15px;
+  border: 2px solid #27ae60;
+  background: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  min-width: 60px;
+  text-align: center;
+  color: #27ae60;
+  font-weight: 500;
 }
 
 .cartActions {

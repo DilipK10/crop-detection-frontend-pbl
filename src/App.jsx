@@ -7,6 +7,7 @@ import ProductDescription from './Components/ProductDescription/ProductDescripti
 import ProductListing from './Components/ProductListing/ProductListing';
 import OrderHistory from './Components/orderDetails/OrderHistory/OrderHistory';
 import MyCart from './Components/orderDetails/my cart/MyCart';
+import Checkout from './Components/orderDetails/Checkout/Checkout';
 import ConsultantListing from './Components/Consultant/Consultant';
 import ConsultantDetail from './Components/Consultant/Details/ConsultantDetail';
 import ConsultantHistory from './Components/Consultant/history/ConsultantHistory';
@@ -25,7 +26,8 @@ const App = () => {
                         <Route exact path='/product/:id' element={<ProductDescription />} />
                         <Route exact path='/Listing' element={<ProductListing />} />
                         <Route exact path='/history' element={<OrderHistory />} />
-                        <Route exact path='/cart' element={<MyCart />} />
+                        <Route exact path='/cart' element={<MyCart />} className={styles.cartContainer} />
+                        <Route exact path='/checkout' element={<Checkout />} />
                         <Route path="/co" element={<ConsultantListing />} />
                         <Route path="/consultant/:id" element={<ConsultantDetail />} />
                         <Route path="/consultant-history" element={<ConsultantHistory />} />

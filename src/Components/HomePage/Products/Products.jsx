@@ -1,76 +1,48 @@
 import React from "react";
-import  './Products.css';
+import './Products.css';
 import ProductData from "./component/ProductDetails";
 import TopProduct from "./component/TopProduct";
 
-
-const Products = () =>{
+const Products = () => {
     return (
         <>
-        <section className='mainContainer'>
-           <div className="conitainer-fluid">
-            <div className="info">
-            <h2 className='hd'>Products Popular</h2>
-            <div className="UnderLine"></div>
-            <ul className="filterTab ">
-                <li className="list-inline-item">
-                    <a className="cursor" href="#">All</a>
-                </li>
-                <li className="list-inline-item">
-                    <a className="cursor" href="#">Milk</a>
-                </li>
-                <li className="list-inline-item">
-                    <a className="cursor" href="#">Coffes</a>
-                </li>
-                <li className="list-inline-item">
-                    <a className="cursor" href="#">Foods</a>
-                </li>
-            </ul>
-            
-            </div>
-
-                <div className="productRow">
-                    <div className="item">
-                        <ProductData/>
-                    </div>
-                    <div className="item">
-                        <ProductData/>
-                    </div>
-                    <div className="item">
-                        <ProductData/>
-                    </div>
-                    <div className="item">
-                        <ProductData/>
-                    </div>
-                    <div className="item">
-                        <ProductData/>
-                    </div>
-                    <div className="item">
-                        <ProductData/>
-                    </div>
-                    <div className="item">
-                        <ProductData/>
-                    </div>
-                    <div className="item">
-                        <ProductData/>
-                    </div>
-                    
-                </div>
-           </div>
-        </section>
-        <section className="topProductSection">
-            <div className="cointainerFluid">
-                <div className="row">
-                    <div className="col">
-                        <TopProduct title="Top Seller"/>
+            <section className='mainContainer'>
+                <div className="container-fluid">
+                    <div className="sectionHeader">
+                        <div className="headerTitle">
+                            <h2 className='hd'>Products Popular</h2>
+                        </div>
                     </div>
 
-                    <div className="col">
-                        <TopProduct  title="New Arrival"/>
+                    <div className="productGrid">
+                        {[...Array(6)].map((_, index) => (
+                            <div key={index} className="productGridItem">
+                                <ProductData />
+                            </div>
+                        ))}
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <section className="topProductSection">
+                <div className="container-fluid">
+                    <div className="topProductsContainer">
+                        <div className="topProductColumn">
+                            <div className="columnHeader">
+                                <h2 className="columnTitle">Top Seller</h2>
+                            </div>
+                            <TopProduct title="Top Seller" />
+                        </div>
+
+                        <div className="topProductColumn">
+                            <div className="columnHeader">
+                                <h2 className="columnTitle">New Arrival</h2>
+                            </div>
+                            <TopProduct title="New Arrival" />
+                        </div>
+                    </div>
+                </div>
+            </section>
         </>
     )
 }

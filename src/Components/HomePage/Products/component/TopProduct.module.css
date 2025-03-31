@@ -1,7 +1,6 @@
 /* Main Container */
 .container {
     width: 100%;
-    padding: 20px;
 }
 
 /* Heading */
@@ -24,71 +23,77 @@
 .products {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 }
 
 /* Product Item */
 .productItem {
     display: flex;
-    align-items: center;  /* Align image and text properly */
-    background: #f8f9fc;
-    border-radius: 12px;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 10px;
     padding: 10px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 1px solid #eee;
 }
 
 /* Hover Effect */
 .productItem:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-    background: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Link */
+.productLink {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-decoration: none;
 }
 
 /* Product Image */
 .productImage {
-    width: 80px;  /* Adjust size as needed */
-    height: 80px;
-    border-radius: 10px;
+    width: 65px;
+    height: 65px;
+    border-radius: 8px;
     object-fit: cover;
-    margin-right: 15px;
-    flex-shrink: 0;  /* Prevent image from shrinking */
+    margin-right: 12px;
+    flex-shrink: 0;
 }
 
 /* Product Details */
 .productDetails {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;  /* Allow details to expand fully */
-}
-.productLink{
-    text-decoration: none;
-}
-/* Product Name */
-.productName {
-    font-size: 14px;
-    font-weight: bold;
-    color: #1a1a1a;
-    text-decoration: none;
-    cursor: pointer;
-}
-.productName a :hover{
-    background-color: #27ae60;
+    flex-grow: 1;
+    text-align: left;
 }
 
+/* Product Name */
+.productName {
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+    margin: 0 0 4px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
 
 /* Rating */
 .rating {
-    font-size: 12px;
+    font-size: 11px;
     color: #ffcc00;
-    margin: 3px 0;
+    margin: 0 0 4px 0;
 }
 
 /* Price Container */
 .priceContainer {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
 }
 
 /* Price */
@@ -96,11 +101,13 @@
     font-size: 14px;
     font-weight: bold;
     color: #27ae60;
+    margin: 0;
 }
 
 /* Old Price (Strikethrough) */
 .oldPrice {
-    font-size: 12px;
+    font-size: 11px;
     color: #999;
     text-decoration: line-through;
+    margin: 0;
 }

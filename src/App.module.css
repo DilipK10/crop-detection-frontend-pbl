@@ -8,14 +8,16 @@ body {
 }
 /* App.module.css */
 .appContainer {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensures full height of the viewport */
 }
 
 /* Main Content */
 .mainContent {
-    flex: 1; /* Takes up remaining space */
+    flex: 1;
+    padding-top: 40px; /* Add padding to create space from navbar */
+    width: 100%;
 }
 
 /* Footer */
@@ -27,8 +29,11 @@ body {
     position: relative;
     bottom: 0;
     width: 100%;
+    margin-top: auto;
     
     z-index: 500; /* Lower than the floating button */
     
     
 }
+
+
