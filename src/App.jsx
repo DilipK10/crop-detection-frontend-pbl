@@ -12,6 +12,7 @@ import ConsultantListing from './Components/Consultant/Consultant';
 import ConsultantDetail from './Components/Consultant/Details/ConsultantDetail';
 import ConsultantHistory from './Components/Consultant/history/ConsultantHistory';
 import { CartProvider } from "./CartContext";
+import SimpleAuthPage from "./Components/Auth/Login"
 import styles from './App.module.css'; // Import the CSS
 
 const App = () => {
@@ -31,6 +32,9 @@ const App = () => {
                         <Route path="/co" element={<ConsultantListing />} />
                         <Route path="/consultant/:id" element={<ConsultantDetail />} />
                         <Route path="/consultant-history" element={<ConsultantHistory />} />
+                        <Route path="/auth" element={<SimpleAuthPage />} />
+
+                        
                     </Routes>
                     </CartProvider>
                 </div>
