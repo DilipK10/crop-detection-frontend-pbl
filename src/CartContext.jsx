@@ -1,9 +1,29 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext(); // Ensure context is created
 
 export const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
+    // Initialize cart from localStorage if available
+    const [cart, setCart] = useState(() => {
+        const savedCart = localStorage.getItem('cart');
+        return savedCart ? JSON.parse(savedCart) : [];
+    });
+    
+    // Initialize orderHistory from localStorage if available
+    const [orderHistory, setOrderHistory] = useState(() => {
+        const savedHistory = localStorage.getItem('orderHistory');
+        return savedHistory ? JSON.parse(savedHistory) : [];
+    });
+
+    // Save cart to localStorage whenever it changes
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]);
+
+    // Save orderHistory to localStorage whenever it changes
+    useEffect(() => {
+        localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+    }, [orderHistory]);
 
     const addToCart = (product) => {
         // Check if product already exists in cart
@@ -28,8 +48,23 @@ export const CartProvider = ({ children }) => {
         setCart(cart.filter((item) => item.id !== id));
     };
 
+    const clearCart = () => {
+        setCart([]);
+    };
+
+    const addToOrderHistory = (order) => {
+        setOrderHistory([...orderHistory, order]);
+    };
+
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+        <CartContext.Provider value={{ 
+            cart, 
+            addToCart, 
+            removeFromCart, 
+            clearCart, 
+            orderHistory, 
+            addToOrderHistory 
+        }}>
             {children}
         </CartContext.Provider>
     );

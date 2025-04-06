@@ -5,7 +5,7 @@ import styles from './Checkout.module.css';
 
 const Checkout = () => {
     const navigate = useNavigate();
-    const { cart, clearCart } = useContext(CartContext);
+    const { cart, clearCart, addToOrderHistory } = useContext(CartContext);
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -32,10 +32,36 @@ const Checkout = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
+        // Create order object
+        const order = {
+            id: `#ORD${Math.floor(Math.random() * 10000).toString().padStart(4, '0')}`,
+            items: [...cart],
+            totalPrice,
+            shippingInfo: {
+                name: `${formData.firstName} ${formData.lastName}`,
+                email: formData.email,
+                phone: formData.phone,
+                address: formData.address,
+                city: formData.city,
+                state: formData.state,
+                zipCode: formData.zipCode
+            },
+            date: new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }),
+            status: 'Processing'
+        };
+        
+        // Add order to history
+        addToOrderHistory(order);
+        
         // Here you would typically send the order to your backend
         alert('Order placed successfully!');
         clearCart();
-        navigate('/order-confirmation');
+        navigate('/history');
     };
 
     return (

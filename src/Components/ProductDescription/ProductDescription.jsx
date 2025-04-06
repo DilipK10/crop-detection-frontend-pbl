@@ -156,6 +156,23 @@ const ProductDescription = () => {
       <div className={styles.descriptionSection}>
         <h3>Product Details</h3>
         <p>{product.description}</p>
+        
+        <h3>About Product</h3>
+        <p>
+          This premium quality product is crafted with the finest ingredients 
+          to ensure maximum satisfaction. Made using sustainable practices and 
+          ethically sourced materials. Our rigorous quality control ensures 
+          that you receive only the best products that meet the highest industry standards.
+        </p>
+        
+        <h3>About Company</h3>
+        <p>
+          Our company has been in business since 1995, dedicated to providing 
+          high-quality organic products to our customers. We believe in sustainable 
+          farming practices and work directly with farmers to ensure fair trade. 
+          Our mission is to make organic products accessible to everyone while 
+          protecting the environment for future generations.
+        </p>
       </div>
 
       {/* Review Section */}
