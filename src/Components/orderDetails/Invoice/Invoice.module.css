@@ -1,0 +1,77 @@
+/* Container Layout */
+.page {
+  padding: 2rem;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* Invoice Box */
+.invoiceContainer {
+  padding: 2.5rem;
+  max-width: 850px;
+  margin: auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Headings */
+h1 {
+  text-align: center;
+  color: #2e7d32;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 1rem;
+}
+
+h2 {
+  color: #1b5e20;
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  border-left: 4px solid #2e7d32;
+  padding-left: 0.75rem;
+}
+
+/* Section Spacing */
+.section {
+  margin-bottom: 2.5rem;
+}
+
+/* Paragraph Styling */
+.section p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Product Image */
+.productImage {
+  max-width: 220px;
+  border-radius: 8px;
+  margin-top: 1rem;
+  border: 1px solid #ddd;
+}
+
+/* Download Button */
+.downloadButton {
+  text-align: right;
+  margin-bottom: 1.5rem;
+}
+
+.downloadButton button {
+  padding: 10px 18px;
+  background-color: #388e3c;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.downloadButton button:hover {
+  background-color: #2e7d32;
+}

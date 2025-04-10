@@ -153,6 +153,7 @@ const ProductListing = ({ title = "Product Listing" }) => {
 
   return (
     <div className={styles.container}>
+      
       <h3 className={styles.heading}>{title}</h3>
       <div className={styles.underline}></div>
 

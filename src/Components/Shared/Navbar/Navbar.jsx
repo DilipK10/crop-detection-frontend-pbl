@@ -31,7 +31,7 @@ const Navbar = () => {
 
             {/* Icons Section */}
             <div className={style.iconDiv}>
-                <img src={userIcon} className={style.userIcon} alt="User Icon" />
+               <Link to="/auth"> <img src={userIcon} className={style.userIcon} alt="User Icon" /></Link>
                <Link to="/cart"><img src={cartIcon} className={style.cartIcon}  alt="Cart Icon" /></Link> 
             </div>
         </nav>

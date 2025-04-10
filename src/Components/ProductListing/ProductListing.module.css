@@ -1,4 +1,4 @@
-.container {
+/* .container {
     width: 100%;
     padding: 20px;
     background-color: #f8f9fc;
@@ -7,7 +7,6 @@
     flex-direction: column;
 }
 
-/* Page Title */
 .heading {
     font-size: 22px;
     font-weight: bold;
@@ -15,7 +14,6 @@
     margin-bottom: 5px;
 }
 
-/* Underline */
 .underline {
     width: 50px;
     height: 3px;
@@ -23,7 +21,6 @@
     margin: 10px auto 20px;
 }
 
-/* Search and Filter */
 .filterSection {
     display: flex;
     justify-content: center;
@@ -38,7 +35,7 @@
     border: 1px solid #ddd;
 }
 
-/* Product Grid */
+
 .productGrid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -50,3 +47,59 @@
     color: red;
     font-size: 16px;
 }
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+} */
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .heading {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .underline {
+    width: 80px;
+    height: 3px;
+    background-color: #27ae60;
+    margin-bottom: 20px;
+  }
+  
+  .filterSection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .searchInput,
+  .categoryFilter {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  /* Product Grid */
+  .productGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px; /* You can reduce to 12px if you want tighter spacing */
+    align-items: stretch;
+  }
+  
+  .noResults {
+    font-size: 16px;
+    color: #999;
+    text-align: center;
+    grid-column: 1 / -1;
+  }
+  

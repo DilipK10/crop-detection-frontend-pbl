@@ -196,80 +196,104 @@
   width: 100%;
   max-width: 1000px;
   background: white;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-top: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .reviewSection h3 {
-  font-size: 1.4rem;
-  margin-bottom: 15px;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
   text-align: center;
+  color: #2c3e50;
 }
 
-/* Individual Reviews */
+/* Individual Review Card */
 .review {
-  padding: 15px;
-  border-bottom: 1px solid #ddd;
-  display: flex;
-  flex-direction: column;
+  background: #f8f9fa;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #27ae60;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 .review:last-child {
-  border-bottom: none;
+  margin-bottom: 0;
 }
 
 .review strong {
   font-size: 1rem;
-  color: #333;
+  color: #2c3e50;
 }
 
 .review p {
-  margin: 5px 0;
-  font-size: 0.9rem;
-  color: #555;
+  margin: 6px 0;
+  font-size: 0.95rem;
+  color: #444;
 }
 
-/* Review Form */
+/* Review Form Styling */
 .reviewForm {
-  margin-top: 20px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
+  gap: 12px;
 }
 
 .reviewForm label {
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 5px;
+  color: #333;
 }
 
 .reviewForm input,
-.reviewForm textarea {
+.reviewForm textarea,
+.reviewForm select {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 0.9rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.reviewForm input:focus,
+.reviewForm textarea:focus,
+.reviewForm select:focus {
+  border-color: #27ae60;
+  outline: none;
 }
 
 .reviewForm textarea {
   resize: vertical;
-  height: 80px;
+  height: 100px;
 }
 
-.reviewForm button {
-  padding: 10px;
-  background: green;
+.submitReviewButton {
+  padding: 12px 20px;
+  background: #27ae60;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background 0.3s ease;
+  align-self: flex-start;
 }
 
-.reviewForm button:hover {
-  background: darkgreen;
+.submitReviewButton:hover {
+  background: #219653;
+}
+
+/* Optional: Star Rating Styling in Reviews */
+.reviews {
+  color: #f1c40f;
+  font-size: 16px;
+  margin: 8px 0;
+  font-weight: 500;
 }

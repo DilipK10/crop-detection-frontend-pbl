@@ -212,12 +212,11 @@
 //   );
 // };
 
-// export default ProductDescription;
 import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { CartContext } from "../../CartContext";
 import styles from "./ProductDescription.module.css";
-import { API_URL } from "../../../config"; // adjust path if needed
+import { API_URL } from "../../../config";
 
 const ProductDescription = () => {
   const { id } = useParams();
@@ -226,14 +225,11 @@ const ProductDescription = () => {
 
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const [selectedSize, setSelectedSize] = useState("60g");
   const [selectedImage, setSelectedImage] = useState("");
-  const [reviews, setReviews] = useState([
-    { name: "Alice", rating: "⭐⭐⭐⭐⭐", comment: "Excellent quality! Will buy again." },
-    { name: "Bob", rating: "⭐⭐⭐⭐", comment: "Good product but slightly expensive." }
-  ]);
+  const [reviews, setReviews] = useState([]);
   const [reviewName, setReviewName] = useState("");
   const [reviewComment, setReviewComment] = useState("");
+  const [reviewRating, setReviewRating] = useState(5);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -252,10 +248,11 @@ const ProductDescription = () => {
   if (!product) {
     return <h2>Loading product...</h2>;
   }
+
   const handleAddToCart = async () => {
     try {
       const token = localStorage.getItem("access");
-  
+
       const response = await fetch("http://127.0.0.1:8000/cart/add/", {
         method: "POST",
         headers: {
@@ -267,93 +264,90 @@ const ProductDescription = () => {
           quantity: quantity,
         }),
       });
-  
+
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.detail || "Failed to add item to cart.");
       }
-  
+
       const priceValue = parseFloat(product.selling_price);
-  
+
       const cartItem = {
         id: product.id,
         name: product.title,
         image: selectedImage,
         price: priceValue,
         quantity: quantity,
-        size: selectedSize,
       };
-  
-      addToCart(cartItem); // optional, to reflect locally
-      alert(`Added ${quantity} item(s) of ${selectedSize} to cart!`);
+
+      addToCart(cartItem);
+      alert(`Added ${quantity} item(s) to cart!`);
       navigate("/cart");
     } catch (err) {
       console.error("Add to cart error:", err);
       alert("Could not add item to cart. Please try again.");
     }
   };
-  
-  // const handleAddToCart = () => {
-  //   const priceValue = parseFloat(product.selling_price);
+  // Helper: Get average rating
+const getAverageRating = () => {
+  if (reviews.length === 0) return 0;
+  const total = reviews.reduce((sum, r) => sum + r.ratingValue, 0);
+  return total / reviews.length;
+};
 
-  //   const cartItem = {
-  //     id: product.id,
-  //     name: product.title,
-  //     image: selectedImage,
-  //     price: priceValue,
-  //     quantity: quantity,
-  //     size: selectedSize
-  //   };
 
-  //   addToCart(cartItem);
-  //   alert(`Added ${quantity} item(s) of ${selectedSize} to cart!`);
-  //   navigate("/cart");
-  // };
+const handleReviewSubmit = (e) => {
+  e.preventDefault();
+  if (reviewName && reviewComment && reviewRating) {
+    const stars = "⭐".repeat(reviewRating);
+    setReviews([
+      ...reviews,
+      {
+        name: reviewName,
+        rating: stars,
+        ratingValue: reviewRating, // 👈 for average calculation
+        comment: reviewComment,
+      },
+    ]);
+    setReviewName("");
+    setReviewComment("");
+    setReviewRating(5);
+  } else {
+    alert("Please fill all review fields.");
+  }
+};
 
-  const handleReviewSubmit = (e) => {
-    e.preventDefault();
-    if (reviewName && reviewComment) {
-      setReviews([...reviews, { name: reviewName, rating: "⭐⭐⭐⭐⭐", comment: reviewComment }]);
-      setReviewName("");
-      setReviewComment("");
-    } else {
-      alert("Please enter your name and review.");
-    }
-  };
 
   return (
     <div className={styles.container}>
       <div className={styles.productCard}>
         <div className={styles.imageSection}>
           <img src={selectedImage} alt="Product" className={styles.productImage} />
-          {/* If multiple images are returned, you can use them like this: */}
-          {/* <div className={styles.thumbnailContainer}>
-            {product.image_paths?.split(",").map((img, index) => (
-              <img key={index} src={img} alt={`Thumbnail ${index}`} onClick={() => setSelectedImage(img)} />
-            ))}
-          </div> */}
         </div>
 
         <div className={styles.detailsSection}>
           <span className={styles.saleBadge}>Sale Off</span>
           <h2 className={styles.productTitle}>{product.title}</h2>
           <p className={styles.brandName}><strong>Brand:</strong> {product.brand_name}</p>
-          <p className={styles.reviews}>⭐ ⭐ ⭐ ⭐ ⭐ (32 reviews)</p>
+          <p className={styles.reviews}>
+              {reviews.length > 0 ? (
+                <>
+                  {Array(Math.round(getAverageRating()))
+                    .fill("⭐")
+                    .join("")}{" "}
+                  ({reviews.length} review{reviews.length !== 1 ? "s" : ""})
+                </>
+              ) : (
+                "No ratings yet"
+              )}
+            </p>
+
           <p className={styles.price}>
-            ${product.selling_price}
-            <span className={styles.oldPrice}>${product.cost_price}</span>
+            ₹{product.cost_price}
+            <span className={styles.oldPrice}>₹{product.selling_price}</span>
             <span className={styles.discount}>10% Off</span>
           </p>
           <p className={styles.description}>{product.description}</p>
-
-          <div className={styles.sizeSelector}>
-            <span>Size / Weight:</span>
-            {["50g", "60g", "80g", "100g", "150g"].map((size) => (
-              <button key={size} className={selectedSize === size ? styles.selectedSize : styles.sizeButton} onClick={() => setSelectedSize(size)}>
-                {size}
-              </button>
-            ))}
-          </div>
 
           <div className={styles.cartActions}>
             <select value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} className={styles.quantitySelect}>
@@ -410,6 +404,14 @@ const ProductDescription = () => {
             onChange={(e) => setReviewComment(e.target.value)}
             className={styles.reviewTextarea}
           ></textarea>
+          <label>
+            Rating:
+            <select value={reviewRating} onChange={(e) => setReviewRating(Number(e.target.value))}>
+              {[5, 4, 3, 2, 1].map((star) => (
+                <option key={star} value={star}>{star} Star{star !== 1 && "s"}</option>
+              ))}
+            </select>
+          </label>
           <button type="submit" className={styles.submitReviewButton}>Submit Review</button>
         </form>
       </div>
@@ -418,3 +420,4 @@ const ProductDescription = () => {
 };
 
 export default ProductDescription;
+

@@ -91,6 +91,8 @@ const ProductCard = ({ product }) => {
   };
 
   return (
+    <>
+    
     <div className={styles.card} onClick={handleProductClick} style={{ cursor: 'pointer' }}>
       <img src={product.image_paths} alt={product.title} className={styles.productImage} />
       <div className={styles.productDetails}>
@@ -107,6 +109,7 @@ const ProductCard = ({ product }) => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 

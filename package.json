@@ -12,12 +12,14 @@
   "dependencies": {
     "@mui/material": "^6.4.7",
     "axios": "^1.8.4",
+    "html2pdf.js": "^0.10.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.3.0",
     "react-slick": "^0.30.3",
     "react-slideshow-image": "^4.3.2",
+    "react-to-print": "^3.0.6",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.2.5"
   },

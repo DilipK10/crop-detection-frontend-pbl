@@ -82,46 +82,72 @@ const MyCart = () => {
 
     // Fetch cart from backend
     useEffect(() => {
-        const fetchCart = async () => {
-            try {
-                const response = await fetch('http://127.0.0.1:8000/cart/view/', {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('access')}` // if auth is needed
-                    }
-                });
-
-                if (!response.ok) throw new Error('Failed to fetch cart');
-
-                const data = await response.json();
-
-                // Convert to expected format
-                const formattedCart = data.map(item => ({
-                    id: item.id,
-                    productId: item.product.id,
-                    name: item.product.name,
-                    price: parseFloat(item.product.selling_price),
-                    image: item.product.image_paths || '/default-image.png', // fallback if image is empty
-                    quantity: item.quantity
-                }));
-
-                setCart(formattedCart);
-            } catch (err) {
-                console.error('Error fetching cart:', err);
-                alert('Could not load cart items');
-            }
-        };
-
         fetchCart();
     }, []);
 
-    const updateQuantity = (itemId, newQuantity) => {
+    const fetchCart = async () => {
+        try {
+            const response = await fetch('http://127.0.0.1:8000/cart/view/', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('access')}`
+                }
+            });
+
+            if (!response.ok) throw new Error('Failed to fetch cart');
+
+            const data = await response.json();
+
+            const formattedCart = data.map(item => ({
+                id: item.id,
+                productId: item.product.id,
+                name: item.product.name,
+                price: parseFloat(item.product.selling_price),
+                image: item.product.image_paths || '/default-image.png',
+                quantity: item.quantity
+            }));
+
+            setCart(formattedCart);
+        } catch (err) {
+            console.error('Error fetching cart:', err);
+            alert('Could not load cart items');
+        }
+    };
+
+    const updateQuantity = async (itemId, newQuantity) => {
+        const item = cart.find(i => i.id === itemId);
+        if (!item) return;
+
         setCart(prevCart =>
-            prevCart.map(item =>
-                item.id === itemId ? { ...item, quantity: Number(newQuantity) } : item
+            prevCart.map(i =>
+                i.id === itemId ? { ...i, quantity: Number(newQuantity) } : i
             )
         );
-        // Optional: send quantity update to backend
+
+        try {
+            const response = await fetch('http://127.0.0.1:8000/cart/update/', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('access')}`
+                },
+                body: JSON.stringify({
+                    productID: item.productId,
+                    quantity: Number(newQuantity)
+                })
+            });
+
+            if (!response.ok) {
+                const errData = await response.json();
+                throw new Error(errData.detail || 'Failed to update quantity');
+            }
+
+            // Optional: Uncomment to re-fetch cart from backend
+            // await fetchCart();
+        } catch (err) {
+            console.error("Update quantity error:", err);
+            alert("Failed to update quantity.");
+        }
     };
 
     const removeItem = async (itemId, productId) => {
@@ -132,14 +158,14 @@ const MyCart = () => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('access')}`
                 },
-                body: JSON.stringify({ productID: productId })  // 👈 this must match backend expectations
+                body: JSON.stringify({ productID: productId })
             });
-    
+
             if (!response.ok) {
                 const errData = await response.json();
                 throw new Error(errData.detail || 'Failed to remove item');
             }
-    
+
             setCart(prevCart => prevCart.filter(item => item.id !== itemId));
             alert("Item removed from cart.");
         } catch (err) {
@@ -147,8 +173,6 @@ const MyCart = () => {
             alert("Failed to remove item from cart.");
         }
     };
-    
-    
 
     const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
 
@@ -174,8 +198,8 @@ const MyCart = () => {
                             <div className={styles.itemDetails}>
                                 <p className={styles.itemName}>{item.name}</p>
                                 <p className={styles.itemPrice}>₹{item.price.toFixed(2)}</p>
-                                <select 
-                                    value={item.quantity} 
+                                <select
+                                    value={item.quantity}
                                     onChange={(e) => updateQuantity(item.id, e.target.value)}
                                     className={styles.quantitySelector}
                                 >
@@ -183,7 +207,12 @@ const MyCart = () => {
                                         <option key={num + 1} value={num + 1}>{num + 1}</option>
                                     ))}
                                 </select>
-                                <button className={styles.removeButton} onClick={() => removeItem(item.id)}>❌ Remove</button>
+                                <button
+                                    className={styles.removeButton}
+                                    onClick={() => removeItem(item.id, item.productId)}
+                                >
+                                    ❌ Remove
+                                </button>
                             </div>
                         </div>
                     ))}
