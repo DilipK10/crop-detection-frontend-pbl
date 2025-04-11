@@ -285,9 +285,18 @@ const OrderHistory = () => {
                 </div>
 
                 <div className={styles.orderFooter}>
-                  <p><strong>Total:</strong> ${parseFloat(order.totalPrice).toFixed(2)}</p>
-                  <p><strong>Shipping Address:</strong> {order.shippingInfo.address}</p>
-                </div>
+                    <p><strong>Total:</strong> ${parseFloat(order.totalPrice).toFixed(2)}</p>
+                    <p><strong>Shipping Address:</strong> {order.shippingInfo.address}</p>
+                    <a
+                      href={`/invoice/${order.id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.invoiceLink}
+                    >
+                      View Invoice
+                    </a>
+                  </div>
+
               </div>
             ))}
           </div>

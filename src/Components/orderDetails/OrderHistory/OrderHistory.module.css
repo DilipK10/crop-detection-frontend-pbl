@@ -280,3 +280,19 @@
     margin-top: 5px;
 }
 
+.invoiceLink {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 12px;
+    background-color: #27ae60;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .invoiceLink:hover {
+    background-color: #219150;
+  }
+  

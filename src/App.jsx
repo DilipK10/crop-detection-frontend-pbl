@@ -61,6 +61,8 @@ import ConsultantHistory from './Components/Consultant/history/ConsultantHistory
 import { CartProvider } from "./CartContext";
 import SimpleAuthPage from "./Components/Auth/Login";
 import Invoice from './Components/orderDetails/Invoice/Invoice'; // Invoice Import
+import UploadPage from './Components/Upload/Upload';
+import DiseaseDetails from './Components/Upload/Details/Details';
 import styles from './App.module.css';
 
 const App = () => {
@@ -76,6 +78,8 @@ const App = () => {
                             <Route exact path='/Listing' element={<ProductListing />} />
                             <Route exact path='/history' element={<OrderHistory />} />
                             <Route exact path='/cart' element={<MyCart />} className={styles.cartContainer} />
+                            <Route path="/upload" element={<UploadPage />} />
+                            <Route path="/disease-details" element={<DiseaseDetails />} />
                             <Route exact path='/checkout' element={<Checkout />} />
                             <Route path="/co" element={<ConsultantListing />} />
                             <Route path="/consultant/:id" element={<ConsultantDetail />} />

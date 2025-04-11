@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import style from './Navbar.module.css';
 import logo from '../../../assets/images/soil-monitoring.png';
@@ -7,6 +7,17 @@ import cartIcon from '../../../assets/images/cart2.png';
 import searchIcon from '../../../assets/images/search.png';
 
 const Navbar = () => {
+    const [uploadedFile, setUploadedFile] = useState(null);
+
+    const handleFileUpload = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            setUploadedFile(file);
+            console.log("Uploaded file:", file.name);
+            // You can now handle the file (e.g., send to backend or preview it)
+        }
+    };
+
     return (
         <nav className={style.navbar}>
             {/* Logo Section */}
@@ -29,13 +40,19 @@ const Navbar = () => {
                 <img src={searchIcon} className={style.searchIcon} alt="Search Icon" />
             </div>
 
-            {/* Icons Section */}
+            {/* Icons + Upload Section */}
             <div className={style.iconDiv}>
-               <Link to="/auth"> <img src={userIcon} className={style.userIcon} alt="User Icon" /></Link>
-               <Link to="/cart"><img src={cartIcon} className={style.cartIcon}  alt="Cart Icon" /></Link> 
+                <Link to="/auth"><img src={userIcon} className={style.userIcon} alt="User Icon" /></Link>
+                <Link to="/cart"><img src={cartIcon} className={style.cartIcon} alt="Cart Icon" /></Link>
+
+                {/* Upload Button */}
+                {/* Upload Button */}
+                <Link to="/upload" className={style.uploadLabel}>Upload</Link>
+
+
             </div>
         </nav>
     );
-}
+};
 
 export default Navbar;

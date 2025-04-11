@@ -51,12 +51,22 @@
 // };
 
 // export default ProductCard;
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./ProductCard.module.css";
+import { API_URL } from "../../../../config";
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
+  const [imageUrl, setImageUrl] = useState("/static/default.jpg"); // fallback image
+
+  useEffect(() => {
+    if (product.images && product.images.length > 0) {
+      const randomIndex = Math.floor(Math.random() * product.images.length);
+      const selectedImage = `${API_URL}${product.images[randomIndex].image}`;
+      setImageUrl(selectedImage);
+    }
+  }, [product]);
 
   const handleProductClick = () => {
     navigate(`/product/${product.id}`);
@@ -66,11 +76,11 @@ const ProductCard = ({ product }) => {
     e.stopPropagation();
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/cart/add/', {
+      const response = await fetch(`${API_URL}/cart/add/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('access')}` // assuming JWT auth
+          'Authorization': `Bearer ${localStorage.getItem('access')}`
         },
         body: JSON.stringify({
           productID: product.id,
@@ -91,10 +101,8 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <>
-    
     <div className={styles.card} onClick={handleProductClick} style={{ cursor: 'pointer' }}>
-      <img src={product.image_paths} alt={product.title} className={styles.productImage} />
+      <img src={imageUrl} alt={product.title} className={styles.productImage} />
       <div className={styles.productDetails}>
         <div className={styles.productName}>{product.title}</div>
         <p className={styles.brandName}>{product.brand_name}</p>
@@ -109,7 +117,6 @@ const ProductCard = ({ product }) => {
         </button>
       </div>
     </div>
-    </>
   );
 };
 
