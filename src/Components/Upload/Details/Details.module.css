@@ -1,27 +1,91 @@
 .detailsContainer {
-    max-width: 600px;
-    margin: 3rem auto;
-    padding: 2rem;
-    background-color: #f5fff4;
-    border-radius: 16px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  .heading {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #2d5a27;
-    text-align: center;
-  }
-  
-  .detailItem {
-    margin-bottom: 1.2rem;
-    font-size: 1.1rem;
-    color: #333;
-  }
-  
-  .detailItem strong {
-    color: #2d5a27;
-  }
-  
+  padding: 2rem;
+  background-color: #f4f9f4; /* soft greenish-white */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2f3e2e; /* dark olive tone */
+}
+
+.heading {
+  font-size: 2rem;
+  color: #2e5e2e; /* darker green */
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #88b04b;
+  padding-bottom: 0.5rem;
+}
+
+.detailItem {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.subheading {
+  font-size: 1.5rem;
+  color: #3c6e47;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #b4d3a1;
+  padding-bottom: 0.25rem;
+}
+
+.cardGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.card {
+  width: 240px; /* Reduced width */
+  background-color: #fff;
+  border: 1px solid #dce3d9;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(34, 60, 80, 0.1);
+  padding: 1rem;
+  transition: transform 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(34, 60, 80, 0.15);
+}
+
+.image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+}
+
+
+.card h4 {
+  font-size: 1.2rem;
+  color: #315b3b;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.cardLink {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  background-color: #88b04b;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.cardLink:hover {
+  background-color: #6e8d3b;
+}
