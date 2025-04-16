@@ -183,35 +183,46 @@ import axios from "axios";
 
 const OrderHistory = () => {
   const [orders, setOrders] = useState([]);
-  const [filterStatus, setFilterStatus] = useState("All");
 
   useEffect(() => {
     const fetchOrderSummary = async () => {
       try {
-        const token = localStorage.getItem("access"); // token stored at login
-        const response = await axios.get("http://127.0.0.1:8000/checkout/fetch-order-summary/", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const token = localStorage.getItem("access");
 
-        const formattedOrders = response.data.map(order => ({
-          id: order.id,
-          date: new Date(order.order_date).toLocaleDateString(),
-          status: formatStatus(order.order_status),
-          totalPrice: order.total_amount,
-          shippingInfo: {
-            address: order.user_address,
-          },
-          items: order.orders.map(item => ({
-            name: item.product.name,
-            image: "https://via.placeholder.com/100",
-            price: item.rate,
-            quantity: item.quantity,
-          })),
-        }));
+        const orderResponse = await axios.get(
+          "http://127.0.0.1:8000/checkout/fetch-order-summary/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
-        setOrders(formattedOrders);
+        const ordersWithProducts = await Promise.all(
+          orderResponse.data.map(async (order) => {
+            const formattedItems = await Promise.all(
+              order.orders.map(async (item) => {
+                return {
+                  name: item.product.name,
+                  price: item.rate,
+                  quantity: item.quantity,
+                };
+              })
+            );
+
+            return {
+              id: order.id,
+              date: new Date(order.order_date).toLocaleDateString(),
+              totalPrice: order.total_amount,
+              shippingInfo: {
+                address: order.user_address,
+              },
+              items: formattedItems,
+            };
+          })
+        );
+
+        setOrders(ordersWithProducts);
       } catch (error) {
         console.error("Error fetching order summary:", error);
       }
@@ -220,89 +231,60 @@ const OrderHistory = () => {
     fetchOrderSummary();
   }, []);
 
-  const formatStatus = (status) => {
-    const statusMap = {
-      confirmed: "Delivered",
-      pending: "Processing",
-      shipped: "Shipped",
-      cancelled: "Cancelled",
-    };
-    return statusMap[status] || "Processing";
-  };
-
-  const filterOrders = (orders) => {
-    if (filterStatus === "All") return orders;
-    return orders.filter(order => order.status === filterStatus);
-  };
-
-  const filteredOrders = filterOrders(orders);
-
   return (
     <div className={styles.container}>
       <h2 className={styles.heading}>Order History</h2>
 
-      <div className={styles.filterControls}>
-        <p className={styles.filterLabel}>Filter by status:</p>
-        <div className={styles.filterButtons}>
-          {["All", "Processing", "Shipped", "Delivered", "Cancelled"].map(status => (
-            <button
-              key={status}
-              className={`${styles.filterButton} ${filterStatus === status ? styles.activeFilter : ""}`}
-              onClick={() => setFilterStatus(status)}
-            >
-              {status}
-            </button>
-          ))}
-        </div>
-      </div>
-
       {orders.length > 0 ? (
-        filteredOrders.length > 0 ? (
-          <div className={styles.orderList}>
-            {filteredOrders.map((order) => (
-              <div key={order.id} className={styles.orderCard}>
-                <div className={styles.orderHeader}>
-                  <p className={styles.orderId}><strong>Order ID:</strong> {order.id}</p>
-                  <p><strong>Date:</strong> {order.date}</p>
-                  <p className={`${styles.status} ${styles[order.status.toLowerCase()]}`}>
-                    {order.status}
-                  </p>
-                </div>
+        <div className={styles.orderList}>
+          {orders.map((order) => (
+            <div key={order.id} className={styles.orderCard}>
+              <div className={styles.orderHeader}>
+                <p className={styles.orderId}>
+                  <strong>Order ID:</strong> {order.id}
+                </p>
+                <p>
+                  <strong>Date:</strong> {order.date}
+                </p>
+              </div>
 
-                <div className={styles.orderItems}>
-                  {order.items.map((item, index) => (
-                    <div key={index} className={styles.orderItem}>
-                      <img src={item.image} alt={item.name} className={styles.productImage} />
-                      <div className={styles.details}>
-                        <p className={styles.productName}>{item.name}</p>
-                        <div className={styles.itemDetails}>
-                          <p className={styles.price}><strong>Price:</strong> ${parseFloat(item.price).toFixed(2)}</p>
-                          <p><strong>Quantity:</strong> {item.quantity}</p>
-                        </div>
+              <div className={styles.orderItems}>
+                {order.items.map((item, index) => (
+                  <div key={index} className={styles.orderItem}>
+                    <div className={styles.details}>
+                      <p className={styles.productName}>{item.name}</p>
+                      <div className={styles.itemDetails}>
+                        <p className={styles.price}>
+                          <strong>Price:</strong> ₹{parseFloat(item.price).toFixed(2)}
+                        </p>
+                        <p>
+                          <strong>Quantity:</strong> {item.quantity}
+                        </p>
                       </div>
                     </div>
-                  ))}
-                </div>
-
-                <div className={styles.orderFooter}>
-                    <p><strong>Total:</strong> ${parseFloat(order.totalPrice).toFixed(2)}</p>
-                    <p><strong>Shipping Address:</strong> {order.shippingInfo.address}</p>
-                    <a
-                      href={`/invoice/${order.id}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.invoiceLink}
-                    >
-                      View Invoice
-                    </a>
                   </div>
-
+                ))}
               </div>
-            ))}
-          </div>
-        ) : (
-          <p className={styles.emptyMessage}>No orders found with status "{filterStatus}".</p>
-        )
+
+              <div className={styles.orderFooter}>
+                <p>
+                  <strong>Total:</strong> ₹{parseFloat(order.totalPrice).toFixed(2)}
+                </p>
+                <p>
+                  <strong>Shipping Address:</strong> {order.shippingInfo.address}
+                </p>
+                <a
+                  href={`/invoice/${order.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.invoiceLink}
+                >
+                  View Invoice
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
       ) : (
         <p className={styles.emptyMessage}>You have no order history yet.</p>
       )}
@@ -311,3 +293,5 @@ const OrderHistory = () => {
 };
 
 export default OrderHistory;
+
+

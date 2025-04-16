@@ -208,7 +208,7 @@ const ConsultantDetail = () => {
       alert("Please select date, time, and mode!");
       return;
     }
-
+  
     const payload = {
       consultantId: consultant.id,
       mode,
@@ -216,16 +216,19 @@ const ConsultantDetail = () => {
       start_time: `${selectedTime}:00`,
       end_time: `${parseInt(selectedTime.slice(0, 2)) + 1}:00:00`, // 1-hour slot
     };
-
+  
+    const token = localStorage.getItem("access");
+  
     try {
       const res = await fetch(`${API_URL}/appointment/book/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify(payload),
       });
-
+  
       if (res.ok) {
         alert(`Booking confirmed with ${consultant.name} on ${selectedDate} at ${selectedTime} (${mode})`);
       } else {
@@ -237,12 +240,13 @@ const ConsultantDetail = () => {
       console.error("Error:", err);
       alert("Something went wrong");
     }
-
+  
     setShowTimeModal(false);
     setSelectedDate("");
     setSelectedTime("");
     setMode("OFFLINE");
   };
+  
 
   if (loading) return <p>Loading...</p>;
   if (!consultant) return <h2 className={styles.notFound}>Consultant not found</h2>;

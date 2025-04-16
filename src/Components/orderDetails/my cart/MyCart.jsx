@@ -103,9 +103,10 @@ const MyCart = () => {
                 productId: item.product.id,
                 name: item.product.name,
                 price: parseFloat(item.product.selling_price),
-                image: item.product.image_paths || '/default-image.png',
+                image: item.product.images?.[0]?.image || '/default-image.png',
                 quantity: item.quantity
             }));
+            
 
             setCart(formattedCart);
         } catch (err) {

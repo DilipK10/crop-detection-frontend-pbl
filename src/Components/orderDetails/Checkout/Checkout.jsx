@@ -371,7 +371,7 @@ const Checkout = () => {
                     {cart.map(item => (
                         <div key={item.id} className={styles.summaryItem}>
                             <img
-                                src={item.product.image_paths || "/placeholder.jpg"}
+                                src={item.product.images?.[0]?.image || "/placeholder.jpg"}
                                 alt={item.product.name}
                                 className={styles.summaryImage}
                             />

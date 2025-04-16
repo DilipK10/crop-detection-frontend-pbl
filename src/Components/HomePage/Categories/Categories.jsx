@@ -7,23 +7,23 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 
-import image1 from "../../../assets/images/image1.jpg";
-import image2 from "../../../assets/images/img_2.jpg"; 
-import image3 from "../../../assets/images/img_3.jpg";
-import image4 from "../../../assets/images/img_4.jpg";
-import image5 from "../../../assets/images/img_5.jpg";
+import image1 from "../../../assets/images/manure.jpg";
+import image2 from "../../../assets/images/compost.jpg"; 
+import image3 from "../../../assets/images/herbicide.jpg";
+import image4 from "../../../assets/images/gypsum.jpg";
+import image5 from "../../../assets/images/herbicide.jpg";
+import image6 from "../../../assets/images/fungiside.jpg";
+import image7 from "../../../assets/images/biochar.jpg";
 
 const categories = [
-  { name: "Beverages", image: image1 },
-  { name: "Dairy", image: image2 },
-  { name: "Grains", image: image3 },
-  { name: "Frozen", image: image4 },
-  { name: "Electronics", image: image5 },
-  { name: "Fashion", image: image1 },
-  { name: "HomeDecor", image: image2 },
-  { name: "Sports", image: image3 },
-  { name: "Toys", image: image4 },
-  { name: "Books", image: image5 },
+  { name: "Manure", image: image1 },
+  { name: "Compost", image: image2 },
+  { name: "Insecticides", image: image3 },
+  { name: "Gypsum", image: image4 },
+  { name: "Herbicides", image: image5 },
+  { name: "Fungicides", image: image6 },
+  { name: "Biochar ", image: image7 },
+
 ];
 
 const CategoriesSlider = () => {

@@ -225,7 +225,8 @@ const ProductDescription = () => {
 
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const [selectedImage, setSelectedImage] = useState("");
+  const [images, setImages] = useState([]);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [reviews, setReviews] = useState([]);
   const [reviewName, setReviewName] = useState("");
   const [reviewComment, setReviewComment] = useState("");
@@ -237,7 +238,7 @@ const ProductDescription = () => {
         const res = await fetch(`${API_URL}/products/product/${id}`);
         const data = await res.json();
         setProduct(data);
-        setSelectedImage(data.image_paths?.split(",")[0] || "");
+        setImages(data.images || []);
       } catch (error) {
         console.error("Error fetching product:", error);
       }
@@ -253,7 +254,7 @@ const ProductDescription = () => {
     try {
       const token = localStorage.getItem("access");
 
-      const response = await fetch("http://127.0.0.1:8000/cart/add/", {
+      const response = await fetch(`${API_URL}/cart/add/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -275,7 +276,7 @@ const ProductDescription = () => {
       const cartItem = {
         id: product.id,
         name: product.title,
-        image: selectedImage,
+        image: images[0]?.image ? `${API_URL}${images[0].image}` : "",
         price: priceValue,
         quantity: quantity,
       };
@@ -288,59 +289,78 @@ const ProductDescription = () => {
       alert("Could not add item to cart. Please try again.");
     }
   };
-  // Helper: Get average rating
-const getAverageRating = () => {
-  if (reviews.length === 0) return 0;
-  const total = reviews.reduce((sum, r) => sum + r.ratingValue, 0);
-  return total / reviews.length;
-};
 
+  const getAverageRating = () => {
+    if (reviews.length === 0) return 0;
+    const total = reviews.reduce((sum, r) => sum + r.ratingValue, 0);
+    return total / reviews.length;
+  };
 
-const handleReviewSubmit = (e) => {
-  e.preventDefault();
-  if (reviewName && reviewComment && reviewRating) {
-    const stars = "⭐".repeat(reviewRating);
-    setReviews([
-      ...reviews,
-      {
-        name: reviewName,
-        rating: stars,
-        ratingValue: reviewRating, // 👈 for average calculation
-        comment: reviewComment,
-      },
-    ]);
-    setReviewName("");
-    setReviewComment("");
-    setReviewRating(5);
-  } else {
-    alert("Please fill all review fields.");
-  }
-};
-
+  const handleReviewSubmit = (e) => {
+    e.preventDefault();
+    if (reviewName && reviewComment && reviewRating) {
+      const stars = "⭐".repeat(reviewRating);
+      setReviews([
+        ...reviews,
+        {
+          name: reviewName,
+          rating: stars,
+          ratingValue: reviewRating,
+          comment: reviewComment,
+        },
+      ]);
+      setReviewName("");
+      setReviewComment("");
+      setReviewRating(5);
+    } else {
+      alert("Please fill all review fields.");
+    }
+  };
 
   return (
     <div className={styles.container}>
       <div className={styles.productCard}>
         <div className={styles.imageSection}>
-          <img src={selectedImage} alt="Product" className={styles.productImage} />
+          {images.length > 0 && (
+            <img
+              src={`${API_URL}${images[selectedImageIndex].image}`}
+              alt="Main product"
+              className={styles.productImage}
+            />
+          )}
+          <div className={styles.thumbnailContainer}>
+            {images.slice(1).map((img, idx) => (
+              <img
+                key={idx + 1}
+                src={`${API_URL}${img.image}`}
+                alt={`Thumbnail ${idx + 1}`}
+                className={`${styles.thumbnail} ${
+                  selectedImageIndex === idx + 1 ? styles.activeThumbnail : ""
+                }`}
+                onClick={() => setSelectedImageIndex(idx + 1)}
+              />
+            ))}
+          </div>
         </div>
 
         <div className={styles.detailsSection}>
           <span className={styles.saleBadge}>Sale Off</span>
           <h2 className={styles.productTitle}>{product.title}</h2>
-          <p className={styles.brandName}><strong>Brand:</strong> {product.brand_name}</p>
+          <p className={styles.brandName}>
+            <strong>Brand:</strong> {product.brand_name}
+          </p>
           <p className={styles.reviews}>
-              {reviews.length > 0 ? (
-                <>
-                  {Array(Math.round(getAverageRating()))
-                    .fill("⭐")
-                    .join("")}{" "}
-                  ({reviews.length} review{reviews.length !== 1 ? "s" : ""})
-                </>
-              ) : (
-                "No ratings yet"
-              )}
-            </p>
+            {reviews.length > 0 ? (
+              <>
+                {Array(Math.round(getAverageRating()))
+                  .fill("⭐")
+                  .join("")}{" "}
+                ({reviews.length} review{reviews.length !== 1 ? "s" : ""})
+              </>
+            ) : (
+              "No ratings yet"
+            )}
+          </p>
 
           <p className={styles.price}>
             ₹{product.cost_price}
@@ -350,37 +370,57 @@ const handleReviewSubmit = (e) => {
           <p className={styles.description}>{product.description}</p>
 
           <div className={styles.cartActions}>
-            <select value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} className={styles.quantitySelect}>
+            <select
+              value={quantity}
+              onChange={(e) => setQuantity(Number(e.target.value))}
+              className={styles.quantitySelect}
+            >
               {[...Array(10).keys()].map((num) => (
-                <option key={num + 1} value={num + 1}>{num + 1}</option>
+                <option key={num + 1} value={num + 1}>
+                  {num + 1}
+                </option>
               ))}
             </select>
-            <button className={styles.addToCart} onClick={handleAddToCart}>🛒 Add to Cart</button>
+            <button className={styles.addToCart} onClick={handleAddToCart}>
+              🛒 Add to Cart
+            </button>
             <button className={styles.iconButton}>♡</button>
             <button className={styles.iconButton}>⇄</button>
           </div>
         </div>
       </div>
 
-      {/* Product Info Section */}
       <div className={styles.descriptionSection}>
         <h3>Product Details</h3>
         <p>{product.description}</p>
 
         <h3>About Product</h3>
-        <p>{product.about_product_line1}</p>
+        <ul>
+          {Object.entries(product)
+            .filter(([key]) => key.startsWith("about_product_line"))
+            .map(([key, value]) => (
+              <li key={key}>{value}</li>
+            ))}
+        </ul>
 
         <h3>About Company</h3>
-        <p>{product.about_company_line1}</p>
+        <ul>
+          {Object.entries(product)
+            .filter(([key]) => key.startsWith("about_company_line"))
+            .map(([key, value]) => (
+              <li key={key}>{value}</li>
+            ))}
+        </ul>
       </div>
 
-      {/* Review Section */}
       <div className={styles.reviewSection}>
         <h3>Customer Reviews</h3>
         {reviews.length > 0 ? (
           reviews.map((review, index) => (
             <div key={index} className={styles.review}>
-              <p><strong>{review.name}</strong> {review.rating}</p>
+              <p>
+                <strong>{review.name}</strong> {review.rating}
+              </p>
               <p>{review.comment}</p>
             </div>
           ))
@@ -388,7 +428,6 @@ const handleReviewSubmit = (e) => {
           <p>No reviews yet. Be the first to review!</p>
         )}
 
-        {/* Review Form */}
         <h3>Write a Review</h3>
         <form onSubmit={handleReviewSubmit} className={styles.reviewForm}>
           <input
@@ -406,13 +445,20 @@ const handleReviewSubmit = (e) => {
           ></textarea>
           <label>
             Rating:
-            <select value={reviewRating} onChange={(e) => setReviewRating(Number(e.target.value))}>
+            <select
+              value={reviewRating}
+              onChange={(e) => setReviewRating(Number(e.target.value))}
+            >
               {[5, 4, 3, 2, 1].map((star) => (
-                <option key={star} value={star}>{star} Star{star !== 1 && "s"}</option>
+                <option key={star} value={star}>
+                  {star} Star{star !== 1 && "s"}
+                </option>
               ))}
             </select>
           </label>
-          <button type="submit" className={styles.submitReviewButton}>Submit Review</button>
+          <button type="submit" className={styles.submitReviewButton}>
+            Submit Review
+          </button>
         </form>
       </div>
     </div>
@@ -420,4 +466,3 @@ const handleReviewSubmit = (e) => {
 };
 
 export default ProductDescription;
-

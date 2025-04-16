@@ -101,12 +101,13 @@ const DiseaseDetails = () => {
                         )}
                         <h4>{product.title}</h4>
                         <p><strong>Brand:</strong> {product.brand_name}</p>
-                        <p>{product.description}</p>
+                        <p>{product.description.length > 50 ? `${product.description.slice(0, 50)}...` : product.description}</p>
+
                         <p><strong>Price:</strong> ₹{product.selling_price}</p>
 
                         {/* Add Link to Product Description */}
-                        <Link to={`/products/${product.id}`} className={style.cardLink}>View Details</Link>
-                    </div>
+                        <Link to={`/product/${product.id}`} className={style.cardLink}>View Details</Link>
+                        </div>
                 ))}
             </div>
 
@@ -125,7 +126,7 @@ const DiseaseDetails = () => {
                         <p><strong>Charges:</strong> ₹{consultant.starting_charges}</p>
 
                         {/* Add Link to Consultant Detail */}
-                        <Link to={`/consultants/${consultant.id}`} className={style.cardLink}>View Profile</Link>
+                        <Link to={`/consultant/${consultant.id}`} className={style.cardLink}>View Profile</Link>
                     </div>
                 ))}
             </div>
