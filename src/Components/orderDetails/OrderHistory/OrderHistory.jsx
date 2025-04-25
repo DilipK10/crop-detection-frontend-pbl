@@ -180,6 +180,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./OrderHistory.module.css";
 import axios from "axios";
+import { API_URL } from "../../../../config";
 
 const OrderHistory = () => {
   const [orders, setOrders] = useState([]);
@@ -190,7 +191,7 @@ const OrderHistory = () => {
         const token = localStorage.getItem("access");
 
         const orderResponse = await axios.get(
-          "http://127.0.0.1:8000/checkout/fetch-order-summary/",
+          `${API_URL}/checkout/fetch-order-summary/`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

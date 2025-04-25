@@ -31,6 +31,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import style from './Details.module.css';
+import { API_URL } from '../../../../config'; // Adjust the import based on your project structure
 
 const DiseaseDetails = () => {
     const { state } = useLocation();
@@ -53,7 +54,7 @@ const DiseaseDetails = () => {
                 // Fetch product details
                 const fetchedProducts = await Promise.all(
                     productRefs.map(async (p) => {
-                        const res = await fetch(`http://127.0.0.1:8000/products/product/${p.id}`);
+                        const res = await fetch(`${API_URL}/products/product/${p.id}`);
                         return await res.json();
                     })
                 );
@@ -62,7 +63,7 @@ const DiseaseDetails = () => {
                 // Fetch consultant details
                 const fetchedConsultants = await Promise.all(
                     consultantRefs.map(async (c) => {
-                        const res = await fetch(`http://127.0.0.1:8000/consultant/profile/${c.id}`);
+                        const res = await fetch(`${API_URL}/consultant/profile/${c.id}`);
                         return await res.json();
                     })
                 );
@@ -77,7 +78,7 @@ const DiseaseDetails = () => {
         }
     }, [productRefs, consultantRefs]);
 
-    const API_URL = "http://127.0.0.1:8000";
+    // const API_URL = "`${API_URL}";
 
     return (
         <div className={style.detailsContainer}>

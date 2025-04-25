@@ -1,4 +1,5 @@
 import React from 'react';
+import { API_URL } from '../../../config';
 
 const Correction = () => {
     const styles = {
@@ -17,7 +18,7 @@ const Correction = () => {
     };
 
     const handleClick = (disease) => {
-        fetch('http://192.168.1.100:8000/predict/set-disease', {
+        fetch(`${API_URL}/predict/set-disease/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -45,14 +46,14 @@ const Correction = () => {
             <br />
             <button
                 style={styles.correctionContainer}
-                onClick={() => handleClick('Early Blight')}
+                onClick={() => handleClick('Potato Early Blight')}
             >
                 Early Blight
             </button>
             <br />
             <button
                 style={styles.correctionContainer}
-                onClick={() => handleClick('Late Blight')}
+                onClick={() => handleClick('Potato Late Blight')}
             >
                 Late Blight
             </button>

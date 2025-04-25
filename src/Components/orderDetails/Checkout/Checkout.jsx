@@ -224,6 +224,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Checkout.module.css';
+import { API_URL } from '../../../../config';
 
 const Checkout = () => {
     const navigate = useNavigate();
@@ -243,7 +244,7 @@ const Checkout = () => {
         const fetchCartAndUser = async () => {
             try {
                 // Fetch cart
-                const cartRes = await fetch('http://127.0.0.1:8000/cart/view/', {
+                const cartRes = await fetch(`${API_URL}/cart/view/`, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${localStorage.getItem('access')}`
@@ -266,7 +267,7 @@ const Checkout = () => {
                 setTotalAmount(total);
 
                 // Fetch user profile
-                const userRes = await fetch('http://127.0.0.1:8000/user/profile/', {
+                const userRes = await fetch(`${API_URL}/user/profile/`, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${localStorage.getItem('access')}`
@@ -297,7 +298,7 @@ const Checkout = () => {
 
     const handlePayment = async () => {
         try {
-            const res = await fetch('http://127.0.0.1:8000/checkout/create_order/', {
+            const res = await fetch(`${API_URL}/checkout/create_order/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -327,7 +328,7 @@ const Checkout = () => {
                         payment_status: 'success'
                     };
 
-                    const orderRes = await fetch('http://127.0.0.1:8000/checkout/placeorder/', {
+                    const orderRes = await fetch(`${API_URL}/checkout/placeorder/`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

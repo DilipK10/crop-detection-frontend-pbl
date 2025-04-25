@@ -100,7 +100,7 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import style from './Upload.module.css';
-
+import { API_URL } from '../../../config';
 const UploadPage = () => {
     const [uploadedFile, setUploadedFile] = useState(null);
     const [capturedImage, setCapturedImage] = useState(null);
@@ -166,8 +166,8 @@ const UploadPage = () => {
             }
 
             const url = isVideo
-                ? 'http://127.0.0.1:8000/predict/video-predict/'
-                : 'http://127.0.0.1:8000/predict/predict/';
+                ? (`${API_URL}/predict/video-predict/`)
+                : (`${API_URL}/predict/predict/`);
 
             const response = await fetch(url, {
                 method: 'POST',

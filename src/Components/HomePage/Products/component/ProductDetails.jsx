@@ -55,6 +55,7 @@
 // export default ProductData;
 import React from "react";
 import "./ProductData.css";
+import { API_URL } from "../../../../../config";
 
 const ProductData = ({ products }) => {
   const handleViewDetails = (id) => {
@@ -63,7 +64,7 @@ const ProductData = ({ products }) => {
 
   const handleAddToCart = async (product) => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/cart/add/", {
+      const response = await fetch(`${API_URL}/cart/add/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

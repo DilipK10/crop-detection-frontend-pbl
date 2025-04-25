@@ -1,5 +1,5 @@
 // config.js
-export const API_URL = "http://localhost:8000";
+export const API_URL = "http://192.168.71.98:8000";
 
 export const USER_API = {
   LOGIN: `${API_URL}/user/login/`,

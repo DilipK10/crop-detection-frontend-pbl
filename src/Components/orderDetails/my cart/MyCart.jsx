@@ -75,6 +75,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './MyCart.module.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { API_URL } from '../../../../config'; // Adjust the import based on your project structure
 
 const MyCart = () => {
     const navigate = useNavigate();
@@ -87,7 +88,7 @@ const MyCart = () => {
 
     const fetchCart = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/cart/view/', {
+            const response = await fetch(`${API_URL}/cart/view/`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('access')}`
@@ -126,7 +127,7 @@ const MyCart = () => {
         );
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/cart/update/', {
+            const response = await fetch(`${API_URL}/cart/update/`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -153,7 +154,7 @@ const MyCart = () => {
 
     const removeItem = async (itemId, productId) => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/cart/delete/', {
+            const response = await fetch(`${API_URL}/cart/delete/`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
