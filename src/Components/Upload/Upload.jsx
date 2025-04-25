@@ -24,7 +24,14 @@ const UploadPage = () => {
         context.drawImage(videoRef.current, 0, 0, 300, 200);
         const imageDataURL = canvasRef.current.toDataURL('image/png');
         setCapturedImage(imageDataURL);
+    
+        // Stop the camera stream after capturing
+        const stream = videoRef.current.srcObject;
+        const tracks = stream?.getTracks();
+        tracks?.forEach(track => track.stop());
+        videoRef.current.srcObject = null; // Clear the video element
     };
+    
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
