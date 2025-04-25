@@ -62,11 +62,13 @@ const ProductCard = ({ product }) => {
 
   useEffect(() => {
     if (product.images && product.images.length > 0) {
-      const randomIndex = Math.floor(Math.random() * product.images.length);
-      const selectedImage = `${API_URL}${product.images[randomIndex].image}`;
-      setImageUrl(selectedImage);
+      const rawImage = product.images[0].image;
+      const fullImage = rawImage.startsWith("http") ? rawImage : `${API_URL}${rawImage}`;
+      setImageUrl(fullImage);
     }
   }, [product]);
+  
+  
 
   const handleProductClick = () => {
     navigate(`/product/${product.id}`);

@@ -122,6 +122,7 @@ import { useReactToPrint } from 'react-to-print';
 import styles from './Invoice.module.css';
 import logo from '../../../assets/images/soil-monitoring.png';
 import html2pdf from 'html2pdf.js';
+import { API_URL } from '../../../../config';
 
 const InvoicePage = () => {
   const { saleId } = useParams();
@@ -190,18 +191,18 @@ const InvoicePage = () => {
   };  
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/user/profile/', { headers })
+    fetch(`${API_URL}/user/profile/`, { headers })
       .then(res => res.json())
       .then(setUserData);
 
-    fetch('http://127.0.0.1:8000/checkout/fetch-order-summary/', { headers })
+    fetch(`${API_URL}/checkout/fetch-order-summary/`, { headers })
       .then(res => res.json())
       .then(async data => {
         const order = data.find(o => String(o.id) === saleId);
         if (order) {
           setOrderData(order);
           const productPromises = order.orders.map(item =>
-            fetch(`http://127.0.0.1:8000/products/product/${item.product.id}`, { headers })
+            fetch(`${API_URL}/products/product/${item.product.id}`, { headers })
               .then(res => res.json())
               .then(prod => ({
                 ...prod,
@@ -216,7 +217,7 @@ const InvoicePage = () => {
           const sellerId = typeof sellerField === 'object' ? sellerField?.id : sellerField;
 
           if (sellerId) {
-            fetch(`http://127.0.0.1:8000/seller/profile/${sellerId}`, { headers })
+            fetch(`${API_URL}/seller/profile/${sellerId}`, { headers })
               .then(res => res.json())
               .then(setSellerData);
           }

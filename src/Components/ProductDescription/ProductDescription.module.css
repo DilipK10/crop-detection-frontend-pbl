@@ -297,3 +297,73 @@
   margin: 8px 0;
   font-weight: 500;
 }
+/* Remove bullets from About Product and About Company sections */
+.descriptionSection ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.descriptionSection ul li {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #444;
+}
+.extraImageWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.overlayImage {
+  filter: brightness(0.5);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+}
+
+.imageSection {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+}
+
+.productImage {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.thumbnailContainer {
+  display: flex;
+  justify-content: flex-start;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 5px;
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.3s ease;
+}
+
+.activeThumbnail {
+  border-color: #27ae60;
+}
