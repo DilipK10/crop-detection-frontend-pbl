@@ -1,74 +1,75 @@
 /* Consultant List Container */
 .consultantList {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #adf1b7;
-  border-radius: 10px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #adf1b7;
+    border-radius: 10px;
 }
 
 /* Header container for title and history button */
 .headerContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 /* Consultant Title */
 .consultantTitle {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
 }
 
 /* Consultant Cards Container */
 .consultantContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 /* Consultant Card */
 .consultantCard {
-  display: flex;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 20px;
-  transition: transform 0.3s ease;
+    display: flex;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
 }
 
 /* Hover Effect */
 .consultantCard:hover {
-  transform: translateY(-3px);
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 /* Consultant Image */
 .consultantImage {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-right: 15px;
-  object-fit: cover;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
 }
 
 /* Consultant Details */
 .consultantDetails {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
- /* Consultant Details */
+
+/* Consultant Details */
 /* .consultantDetails {
   flex: 1;
   display: flex;
   flex-direction: row; /* Align items in a row */
-  /* justify-content: space-between; /* Push button to the right */
-  /* align-items: center; Align items vertically */
+/* justify-content: space-between; /* Push button to the right */
+/* align-items: center; Align items vertically */
 
 
 
@@ -76,60 +77,64 @@
 
 /* Consultant Name */
 .consultantName {
-  font-size: 18px;
-  color: #333;
+    font-size: 18px;
+    color: #333;
 }
 
 /* Consultant Experience & Expertise */
-.consultantExperience, .consultantExpertise {
-  font-size: 14px;
-  color: #666;
+.consultantExperience,
+.consultantExpertise {
+    font-size: 14px;
+    color: #666;
 }
 
 /* View Details Button */
 .detailsBtn {
-  background: #27ae60;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-  margin-left: auto; /* Push the button to the right */
-  display: flex; /* Ensure proper alignment */
-  align-items: center; /* Center vertically */
+    background: #27ae60;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    margin-left: auto;
+    /* Push the button to the right */
+    display: flex;
+    /* Ensure proper alignment */
+    align-items: center;
+    /* Center vertically */
 }
 
 .detailsBtn:hover {
-  background: #219a52;
+    background: #219a52;
 }
 
 /* History Button */
 .historyBtn {
-  padding: 10px 15px;
-  background: #007bff;
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: bold;
-  transition: background 0.3s;
+    padding: 10px 15px;
+    background: #007bff;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s;
 }
 
 .historyBtn:hover {
-  background: #0056b3;
+    background: #0056b3;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .headerContainer {
-      flex-direction: column;
-      gap: 10px;
-      text-align: center;
-  }
+    .headerContainer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
 
-  .historyBtn {
-      width: 100%;
-      text-align: center;
-      font-size: 14px;
-  }
+    .historyBtn {
+        width: 100%;
+        text-align: center;
+        font-size: 14px;
+    }
 }

@@ -1,321 +1,179 @@
-/* Navbar Container
+/* Navbar */
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    background-color: #ffffff;
-    padding: 12px 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    font-family: 'Poppins', sans-serif;
-}
-.uploadLabel {
-    background-color: #4CAF50;
-    color: white;
-    padding: 6px 12px;
-    margin-left: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease;
-}
-
-.uploadLabel:hover {
-    background-color: #45a049;
-}
-
-.hiddenInput {
-    display: none;
-}
-
-
-/* Logo Section */
-/* .logoDiv {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.logo {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-}
-
-.hd {
-    font-size: 18px;
-    font-weight: normal;
-   
-    margin: 0;
-}
-
-.navLinks {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
-}
-
-.navItem {
-    font-size: 16px;
-    font-weight: 500;
-    text-decoration: none;
-    color: black;
-    transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.navItem:hover {
-    color: #27ae60;
-    transform: scale(1.05);
-}
-
-
-.searchDiv {
-    display: flex;
-    align-items: center;
-    background: #ffffff;
-    padding: 4px 10px;
-    border-radius: 20px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    gap: 8px;
-}
-
-#searchInput {
-    border: none;
-    outline: none;
-    padding: 6px 10px;
-    font-size: 14px;
-    width: 160px;
-    border-radius: 20px;
-}
-
-.searchIcon {
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.searchIcon:hover {
-    transform: scale(1.2);
-}
-
-
-.iconDiv {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.userIcon,
-.cartIcon {
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.userIcon:hover,
-.cartIcon:hover {
-    transform: scale(1.2);
-}
-
-
-@media (max-width: 1024px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px;
-    }
-
-    .logoDiv {
-        margin-bottom: 10px;
-    }
-
-    .navLinks {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 15px;
-        margin-bottom: 10px;
-    }
-
-    .searchDiv {
-        margin-bottom: 10px;
-    }
-
-    .iconDiv {
-        justify-content: center;
-        width: 100%;
-    }
-}
-
-@media (max-width: 600px) {
-    .navLinks {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    #searchInput {
-        width: 140px;
-    }
-}  */
-/* Overall Navbar */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(to right, #4CAF50, #2E7D32); /* Lush green gradient */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    background: linear-gradient(to right, #4CAF50, #2E7D32);
     padding: 12px 24px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1000; 
 }
 
 /* Logo and Title */
 .logoDiv {
-    display: flex;
+    display: flex; 
     align-items: center;
 }
 
 .logo {
-    height: 45px;
+    height: 45px; 
     margin-right: 10px;
 }
 
 .hd {
-    font-size: 1.5rem;
-    color: white;
-    font-weight: 600;
-    font-family: 'Segoe UI', sans-serif;
+    font-size: 1.5rem; 
+    color: white; 
+    font-weight: 600; 
+    font-family: 'Segoe UI', sans-serif; 
 }
 
 /* Navigation Links */
 .navLinks {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
+    list-style: none; 
+    display: flex; 
+    gap: 20px; 
+    margin: 0; 
+    padding: 0; 
 }
 
 .navItem {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
+    color: white; 
+    text-decoration: none; 
+    font-size: 1rem; 
     padding: 6px 12px;
     border-radius: 6px;
     transition: background-color 0.3s ease;
 }
 
 .navItem:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2); 
 }
 
 /* Search Bar */
 .searchDiv {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    border-radius: 20px;
+    display: flex; 
+    align-items: center; 
+    background-color: white; 
+    border-radius: 20px; 
     padding: 5px 10px;
-    margin-left: 20px;
+    margin-left: 20px; 
 }
 
 #searchInput {
-    border: none;
-    outline: none;
-    padding: 6px 10px;
-    font-size: 0.9rem;
+    border: none; 
+    outline: none; 
+    padding: 6px 10px; 
+    font-size: 0.9rem; 
     border-radius: 20px;
-    width: 150px;
+    width: 150px; 
 }
 
 .searchIcon {
-    width: 18px;
-    height: 18px;
-    margin-left: 6px;
+    width: 20px; 
+    height: 20px; 
+    margin-right: 15px; 
     cursor: pointer;
+    transition: transform 0.2s ease; 
+}
+
+.searchIcon:hover {
+    transform: scale(1.2); 
+}
+
+.searching {
+    animation: pulse 1.5s infinite ease-in-out; 
+    opacity: 0.7; 
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1); 
+    }
+    50% {
+        transform: scale(0.9); 
+    }
+    100% {
+        transform: scale(1); 
+    }
 }
 
 /* Icon Section */
 .iconDiv {
     display: flex;
-    align-items: center;
+    align-items: center; 
     gap: 15px;
 }
 
 /* User Icon */
 .userIcon {
-    width: 22px;
-    height: 22px;
+    width: 22px; 
+    height: 22px; 
     cursor: pointer;
     filter: invert(100%);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease; 
 }
 
 .userIcon:hover {
-    transform: scale(1.1);
+    transform: scale(1.1); 
 }
 
 /* Cart Icon */
 .cartIcon {
-    width: 26px;
-    height: 26px;
-    cursor: pointer;
+    width: 26px; 
+    height: 26px; 
+    cursor: pointer; 
     transition: transform 0.3s ease;
 }
 
 .cartIcon:hover {
-    transform: scale(1.1);
+    transform: scale(1.1); 
 }
 
 /* Upload Button */
 .uploadLabel {
     background-color: #ffffff;
-    color: #2E7D32;
-    padding: 6px 14px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: 500;
-    border: 2px solid #2E7D32;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    text-decoration: none;
+    color: #2E7D32; 
+    padding: 6px 14px; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    font-size: 0.85rem; 
+    font-weight: 500; 
+    border: 2px solid #2E7D32; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    text-decoration: none; 
 }
 
 .uploadLabel:hover {
-    background-color: #2E7D32;
-    color: white;
+    background-color: #2E7D32; 
+    color: white; 
 }
 
 /* Hidden file input */
 .hiddenInput {
-    display: none;
+    display: none; 
 }
 
 /* Responsive */
 @media (max-width: 768px) {
     .navbar {
-        flex-wrap: wrap;
+        flex-wrap: wrap; 
         justify-content: center;
         padding: 10px;
     }
 
     .navLinks {
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 10px;
+        flex-direction: column; 
+        gap: 10px; 
+        margin-top: 10px; 
     }
 
     .searchDiv {
-        margin-top: 10px;
+        margin-top: 10px; 
     }
 
     .iconDiv {
-        margin-top: 10px;
+        margin-top: 10px; 
     }
 }

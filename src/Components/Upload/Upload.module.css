@@ -1,3 +1,4 @@
+/* Main container for the upload page */
 .uploadContainer {
     padding: 2rem;
     display: flex;
@@ -9,8 +10,10 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     max-width: 500px;
     margin: 2rem auto;
-  }
-  .removeBtn {
+}
+
+/* Button to remove uploaded file or captured image */
+.removeBtn {
     background-color: #ff4d4f;
     color: white;
     padding: 8px 12px;
@@ -20,14 +23,15 @@
     cursor: pointer;
 }
 
-  
-  .title {
+/* Title style */
+.title {
     font-size: 2rem;
     color: #2d5a27;
     font-weight: bold;
-  }
-  
-  .inputLabel {
+}
+
+/* Label for file input */
+.inputLabel {
     background-color: #2d5a27;
     color: white;
     padding: 0.75rem 1.5rem;
@@ -35,30 +39,36 @@
     cursor: pointer;
     font-weight: 500;
     transition: background 0.3s;
-  }
-  
-  .inputLabel:hover {
+}
+
+/* Label hover effect */
+.inputLabel:hover {
     background-color: #3c7335;
-  }
-  
-  .hiddenInput {
+}
+
+/* Hide the actual file input */
+.hiddenInput {
     display: none;
-  }
-  
-  .previewText {
+}
+
+/* Text showing uploaded file name */
+.previewText {
     color: #333;
     font-size: 1rem;
     margin-top: 0.5rem;
-  }
-  .videoPreview {
+}
+
+/* Video preview style for camera feed */
+.videoPreview {
     width: 100%;
     max-width: 400px;
     border-radius: 10px;
     margin-top: 1rem;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .captureBtn {
+}
+
+/* Common button style for capture/upload actions */
+.captureBtn {
     margin-top: 1rem;
     padding: 0.6rem 1.2rem;
     background-color: #2d5a27;
@@ -68,16 +78,17 @@
     font-weight: 500;
     cursor: pointer;
     transition: background 0.3s;
-  }
-  
-  .captureBtn:hover {
+}
+
+/* Capture button hover effect */
+.captureBtn:hover {
     background-color: #3c7335;
-  }
-  
-  .imagePreview {
+}
+
+/* Image preview style for captured image */
+.imagePreview {
     max-width: 300px;
     margin-top: 1rem;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

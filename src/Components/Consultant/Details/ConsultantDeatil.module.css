@@ -147,6 +147,7 @@
         transform: translateY(-20px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -160,6 +161,7 @@
     font-weight: 600;
 }
 
+/* Modal Input Fields */
 .inputField {
     width: 100%;
     padding: 15px;
@@ -185,7 +187,9 @@
     margin-top: 30px;
 }
 
-.confirmBtn, .cancelBtn {
+/* Modal Buttons */
+.confirmBtn,
+.cancelBtn {
     flex: 1;
     padding: 15px;
     border: none;
@@ -304,4 +308,3 @@
         grid-template-columns: 1fr;
     }
 }
-  

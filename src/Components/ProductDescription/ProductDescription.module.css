@@ -1,369 +1,446 @@
+/* ===============================
+   Main Container
+==================================*/
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f8f9fa;
-  padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 20px;
 }
 
+/* ===============================
+   Product Card Styling
+==================================*/
 .productCard {
-  display: flex;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  width: 1000px;
-  padding: 15px;
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 1000px;
+    padding: 15px;
 }
 
+/* ===============================
+   Image Section inside Product Card
+==================================*/
 .imageSection {
-  flex: 1;
-  padding: 10px;
-  text-align: center;
+    flex: 1;
+    padding: 10px;
+    text-align: center;
 }
 
+/* Product Main Image */
 .productImage {
-  width: 100%;
-  max-width: 250px;
-  border-radius: 6px;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 6px;
+    margin-bottom: 10px;
 }
 
+/* Thumbnails Container */
 .thumbnailContainer {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  width:100%;
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 5px;
 }
 
+/* Individual Thumbnail */
 .thumbnail {
-  width: 50px;
-  height: 50px;
-  margin: 5px;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  cursor: pointer;
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border 0.3s ease;
 }
 
+/* Active Selected Thumbnail */
 .activeThumbnail {
-  border-color: green;
-  width: 100%;
-  max-width: 50px;
+    border-color: #27ae60;
 }
 
+/* ===============================
+   Product Details Section
+==================================*/
 .detailsSection {
-  flex: 2;
-  padding: 10px;
+    flex: 2;
+    padding: 10px;
 }
 
+/* Sale Badge */
 .saleBadge {
-  background: red;
-  color: white;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
+    background: red;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
 }
 
+/* Product Title */
 .productTitle {
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin: 8px 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 8px 0;
 }
 
+/* Review Stars */
 .reviews {
-  color: gold;
-  font-size: 12px;
+    color: #f1c40f;
+    font-size: 16px;
+    margin: 8px 0;
+    font-weight: 500;
 }
 
+/* Current Price */
 .price {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: green;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: green;
 }
 
+/* Old Price (strikethrough) */
 .oldPrice {
-  text-decoration: line-through;
-  color: gray;
-  margin-left: 6px;
-  font-size: 12px;
+    text-decoration: line-through;
+    color: gray;
+    margin-left: 6px;
+    font-size: 12px;
 }
 
+/* Discount Label */
 .discount {
-  color: red;
-  font-size: 12px;
-  margin-left: 6px;
+    color: red;
+    font-size: 12px;
+    margin-left: 6px;
 }
 
+/* Product Short Description */
 .description {
-  color: #555;
-  font-size: 12px;
-  margin: 10px 0;
+    color: #555;
+    font-size: 12px;
+    margin: 10px 0;
 }
 
+/* ===============================
+   Size Selector Section
+==================================*/
 .sizeSelector {
-  margin: 20px 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
+/* Unselected Size Button */
 .sizeButton {
-  padding: 8px 15px;
-  border: 1px solid #ddd;
-  background: white;
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 14px;
-  min-width: 60px;
-  text-align: center;
-  transition: all 0.3s ease;
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    min-width: 60px;
+    text-align: center;
+    transition: all 0.3s ease;
 }
 
+/* Selected Size Button */
 .selectedSize {
-  padding: 8px 15px;
-  border: 2px solid #27ae60;
-  background: white;
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 14px;
-  min-width: 60px;
-  text-align: center;
-  color: #27ae60;
-  font-weight: 500;
+    padding: 8px 15px;
+    border: 2px solid #27ae60;
+    background: white;
+    color: #27ae60;
+    font-weight: 500;
+    border-radius: 4px;
+    font-size: 14px;
+    min-width: 60px;
+    text-align: center;
+    cursor: pointer;
 }
 
+/* ===============================
+   Cart Actions (Quantity + Add to Cart)
+==================================*/
 .cartActions {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
 }
 
+/* Quantity Dropdown */
 .quantitySelect {
-  padding: 5px;
-  border: 1px solid #ccc;
-  margin-right: 8px;
-  font-size: 12px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-right: 8px;
+    font-size: 12px;
 }
 
+/* Add to Cart Button */
 .addToCart {
-  background: green;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+    background: green;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
+/* Wishlist or Favorite Icon Button */
 .iconButton {
-  background: white;
-  border: 1px solid #ddd;
-  padding: 6px;
-  margin-left: 6px;
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 14px;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 6px;
+    margin-left: 6px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
 }
 
-/* Product Info */
+/* ===============================
+   Product Extra Information
+==================================*/
 .productInfo {
-  margin-top: 15px;
-  font-size: 12px;
+    margin-top: 15px;
+    font-size: 12px;
 }
 
+/* Info Text Paragraphs */
 .productInfo p {
-  margin: 4px 0;
+    margin: 4px 0;
 }
 
-/* Description Section */
+/* ===============================
+   Product Description Section
+==================================*/
 .descriptionSection {
-  width: 1000px;
-  background: white;
-  padding: 15px;
-  margin-top: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px;
+    background: white;
+    padding: 25px;
+    margin-top: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
+/* Section Heading */
 .descriptionSection h3 {
-  margin-bottom: 10px;
+    font-size: 1.6rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-align: left;
 }
 
-/* Review Section */
-/* Review Section */
+/* Lists inside Description (no default bullets) */
+.descriptionSection ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+/* Individual list items */
+.descriptionSection ul li {
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Custom bullet for list items */
+.descriptionSection ul li::before {
+    content: "•";
+    color: #27ae60;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Paragraphs inside Description Section */
+.descriptionSection p {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+/* About Product and About Company Boxes */
+.aboutProduct,
+.aboutCompany {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Headings inside About Sections */
+.aboutProduct h4,
+.aboutCompany h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+/* Paragraphs inside About Sections */
+.aboutProduct p,
+.aboutCompany p {
+    font-size: 13px;
+    color: #555;
+}
+
+/* ===============================
+   Review Section Styling
+==================================*/
 .reviewSection {
-  width: 100%;
-  max-width: 1000px;
-  background: white;
-  padding: 30px;
-  margin-top: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px;
+    background: white;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Review Section Heading */
 .reviewSection h3 {
-  font-size: 1.6rem;
-  margin-bottom: 20px;
-  text-align: center;
-  color: #2c3e50;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #2c3e50;
 }
 
-/* Individual Review Card */
+/* ===============================
+   Individual Review Card
+==================================*/
 .review {
-  background: #f8f9fa;
-  padding: 20px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  border-left: 4px solid #27ae60;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    background: #f8f9fa;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
+/* Remove bottom margin for last review */
 .review:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
+/* Reviewer Name */
 .review strong {
-  font-size: 1rem;
-  color: #2c3e50;
+    font-size: 1rem;
+    color: #2c3e50;
 }
 
+/* Review Content */
 .review p {
-  margin: 6px 0;
-  font-size: 0.95rem;
-  color: #444;
+    margin: 6px 0;
+    font-size: 0.95rem;
+    color: #444;
 }
 
-/* Review Form Styling */
+/* ===============================
+   Review Form Styling
+==================================*/
 .reviewForm {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
+/* Review Form Labels */
 .reviewForm label {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #333;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
 }
 
+/* Form Inputs, Textareas, and Selects */
 .reviewForm input,
 .reviewForm textarea,
 .reviewForm select {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  background: #fff;
-  transition: border-color 0.3s ease;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background: #fff;
+    transition: border-color 0.3s ease;
 }
 
+/* Input focus effect */
 .reviewForm input:focus,
 .reviewForm textarea:focus,
 .reviewForm select:focus {
-  border-color: #27ae60;
-  outline: none;
+    border-color: #27ae60;
+    outline: none;
 }
 
+/* Textarea specific styling */
 .reviewForm textarea {
-  resize: vertical;
-  height: 100px;
+    resize: vertical;
+    height: 100px;
 }
 
+/* Submit Review Button */
 .submitReviewButton {
-  padding: 12px 20px;
-  background: #27ae60;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  align-self: flex-start;
+    padding: 12px 20px;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    align-self: flex-start;
 }
 
+/* Submit button hover effect */
 .submitReviewButton:hover {
-  background: #219653;
+    background: #219653;
 }
 
-/* Optional: Star Rating Styling in Reviews */
-.reviews {
-  color: #f1c40f;
-  font-size: 16px;
-  margin: 8px 0;
-  font-weight: 500;
-}
-/* Remove bullets from About Product and About Company sections */
-.descriptionSection ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.descriptionSection ul li {
-  margin-bottom: 6px;
-  font-size: 14px;
-  color: #444;
-}
+/* ===============================
+   Extra Image Overlay Effects
+==================================*/
+/* Wrapper for extra images */
 .extraImageWrapper {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
+/* Image under the overlay */
 .overlayImage {
-  filter: brightness(0.5);
+    filter: brightness(0.5);
 }
 
+/* Dark overlay with text on images */
 .imageOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 6px;
-}
-
-.imageSection {
-  flex: 1;
-  padding: 10px;
-  text-align: center;
-}
-
-.productImage {
-  width: 100%;
-  max-width: 300px;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-
-.thumbnailContainer {
-  display: flex;
-  justify-content: flex-start;
-  overflow-x: auto;
-  gap: 10px;
-  padding: 5px;
-}
-
-.thumbnail {
-  width: 60px;
-  height: 60px;
-  border-radius: 4px;
-  object-fit: cover;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: border 0.3s ease;
-}
-
-.activeThumbnail {
-  border-color: #27ae60;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
 }
