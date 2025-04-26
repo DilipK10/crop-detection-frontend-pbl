@@ -1,9 +1,10 @@
+/*main cointainer*/
 .mainContainer {
     margin-bottom: 30px;
 }
 
+/* Main container for the product section */
 .container-fluid {
-    width: 100%;
     max-width: 100%;
     margin: 0px;
     padding: 0 20px;
@@ -17,11 +18,13 @@
     padding: 0;
 }
 
+/* Header Title */
 .headerTitle {
     display: flex;
     align-items: center;
 }
 
+/* Header Title with underline */
 .hd {
     font-size: 24px;
     font-weight: bold;
@@ -44,14 +47,16 @@
 
 /* Product Popular - Horizontal Scrollable Row */
 .productGrid {
+    width: 100%;
     display: flex;
     flex-wrap: nowrap;
-    overflow-x: auto;
+    /* overflow-x: auto; */
     gap: 20px;
     padding-bottom: 10px;
-    scroll-snap-type: x mandatory;
+    /* scroll-snap-type: x mandatory; */
 }
 
+/* Product Thumbnail */
 .productThumb {
     flex: 0 0 auto;
     scroll-snap-align: start;
@@ -79,6 +84,7 @@
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
 }
 
+
 .columnHeader {
     margin-bottom: 15px;
     border-bottom: 1px solid #eee;
@@ -86,6 +92,7 @@
     text-align: left;
 }
 
+/* Column Title */
 .columnTitle {
     font-size: 20px;
     font-weight: bold;
@@ -96,6 +103,7 @@
     text-align: left;
 }
 
+/* Column Title with underline */
 .columnTitle::after {
     content: "";
     display: block;
@@ -111,6 +119,7 @@
 .productGrid::-webkit-scrollbar {
     display: none;
 }
+
 .productGrid {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -127,6 +136,7 @@
     .topProductsContainer {
         grid-template-columns: 1fr;
     }
+
     .topProductColumn {
         margin-bottom: 20px;
     }
@@ -139,6 +149,7 @@
 }
 
 @media (max-width: 576px) {
+
     .mainContainer,
     .topProductSection {
         padding: 15px;

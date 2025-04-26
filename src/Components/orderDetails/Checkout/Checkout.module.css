@@ -1,3 +1,4 @@
+/* Checkout Page Styles */
 .checkoutContainer {
     max-width: 1200px;
     margin: 0 auto;
@@ -5,6 +6,7 @@
     /* background: #f8f9fa; */
 }
 
+/* Checkout Page Heading */
 .heading {
     font-size: 28px;
     color: #2c3e50;
@@ -12,6 +14,7 @@
     text-align: center;
 }
 
+/* Checkout Page Grid */
 .checkoutGrid {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -34,6 +37,7 @@
     font-weight: 600;
 }
 
+/* Order Summary Items */
 .summaryItem {
     display: flex;
     gap: 15px;
@@ -45,6 +49,7 @@
     border-bottom: none;
 }
 
+/* Summary Image */
 .summaryImage {
     width: 80px;
     height: 80px;
@@ -56,6 +61,7 @@
     flex: 1;
 }
 
+/* Summary Name and Price */
 .summaryName {
     font-size: 16px;
     color: #2c3e50;
@@ -67,6 +73,7 @@
     color: #7f8c8d;
 }
 
+/* Summary Quantity */
 .totalSection {
     margin-top: 20px;
     padding-top: 20px;
@@ -130,6 +137,7 @@
     box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
 }
 
+/*button styles*/
 .placeOrderBtn {
     background: #27ae60;
     color: white;
@@ -177,4 +185,4 @@
     .orderSummary {
         padding: 20px;
     }
-} 
+}

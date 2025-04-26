@@ -8,7 +8,7 @@ export const CartProvider = ({ children }) => {
         const savedCart = localStorage.getItem('cart');
         return savedCart ? JSON.parse(savedCart) : [];
     });
-    
+
     // Initialize orderHistory from localStorage if available
     const [orderHistory, setOrderHistory] = useState(() => {
         const savedHistory = localStorage.getItem('orderHistory');
@@ -28,19 +28,19 @@ export const CartProvider = ({ children }) => {
     const addToCart = (product) => {
         // Check if product already exists in cart
         const existingItemIndex = cart.findIndex(item => item.id === product.id);
-        
+
         if (existingItemIndex >= 0) {
             // If product exists, update quantity instead of adding new item
             const updatedCart = [...cart];
-            
+
             // We are replacing the product entirely in case other attributes have changed
             // For example, if size was changed in product details
             updatedCart[existingItemIndex] = product;
-            
+
             setCart(updatedCart);
         } else {
             // If product doesn't exist, add it to cart
-            setCart([...cart, product]); 
+            setCart([...cart, product]);
         }
     };
 
@@ -57,13 +57,13 @@ export const CartProvider = ({ children }) => {
     };
 
     return (
-        <CartContext.Provider value={{ 
-            cart, 
-            addToCart, 
-            removeFromCart, 
-            clearCart, 
-            orderHistory, 
-            addToOrderHistory 
+        <CartContext.Provider value={{
+            cart,
+            addToCart,
+            removeFromCart,
+            clearCart,
+            orderHistory,
+            addToOrderHistory
         }}>
             {children}
         </CartContext.Provider>

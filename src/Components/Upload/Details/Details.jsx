@@ -1,33 +1,3 @@
-// import React from 'react';
-// import { useLocation } from 'react-router-dom';
-// import style from './Details.module.css';
-
-// const DiseaseDetails = () => {
-//     const { state } = useLocation();
-//     const {
-//         name,
-//         cure,
-//         precaution,
-//         causes,
-//         treatmentProducts,
-//         consultant
-//     } = state || {};
-
-//     return (
-//         <div className={style.detailsContainer}>
-//             <h2 className={style.heading}>Disease Details</h2>
-
-//             <p className={style.detailItem}><strong>Disease Name:</strong> {name}</p>
-//             <p className={style.detailItem}><strong>Cure:</strong> {cure}</p>
-//             <p className={style.detailItem}><strong>Precaution:</strong> {precaution}</p>
-//             <p className={style.detailItem}><strong>Causes:</strong> {causes}</p>
-//             <p className={style.detailItem}><strong>Treatment Products:</strong> {treatmentProducts?.join(', ')}</p>
-//             <p className={style.detailItem}><strong>Consultant:</strong> {consultant?.name} ({consultant?.contact})</p>
-//         </div>
-//     );
-// };
-
-// export default DiseaseDetails;
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import style from './Details.module.css';
@@ -94,10 +64,10 @@ const DiseaseDetails = () => {
                 {products.map(product => (
                     <div key={product.id} className={style.card}>
                         {product.images?.length > 0 && (
-                            <img 
-                                src={`${API_URL}${product.images[0].image}`} 
-                                alt={product.title} 
-                                className={style.image} 
+                            <img
+                                src={`${API_URL}${product.images[0].image}`}
+                                alt={product.title}
+                                className={style.image}
                             />
                         )}
                         <h4>{product.title}</h4>
@@ -108,7 +78,7 @@ const DiseaseDetails = () => {
 
                         {/* Add Link to Product Description */}
                         <Link to={`/product/${product.id}`} className={style.cardLink}>View Details</Link>
-                        </div>
+                    </div>
                 ))}
             </div>
 
@@ -116,9 +86,9 @@ const DiseaseDetails = () => {
             <div className={style.cardGrid}>
                 {consultants.map(consultant => (
                     <div key={consultant.id} className={style.card}>
-                        <img 
-                            src={`${API_URL}${consultant.profile}`} 
-                            alt={consultant.first_name} 
+                        <img
+                            src={`${API_URL}${consultant.profile}`}
+                            alt={consultant.first_name}
                             className={style.image}
                         />
                         <h4>{consultant.first_name} {consultant.last_name}</h4>

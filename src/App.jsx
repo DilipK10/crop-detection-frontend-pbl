@@ -16,7 +16,7 @@ import SimpleAuthPage from "./Components/Auth/Login";
 import Invoice from './Components/orderDetails/Invoice/Invoice'; // Invoice Import
 import UploadPage from './Components/Upload/Upload';
 import DiseaseDetails from './Components/Upload/Details/Details';
-import SearchResults from './Components/search/SearchResults'; // Add SearchResults import
+import SearchResults from './Components/Search/SearchResults'; // Add SearchResults import
 import styles from './App.module.css';
 import Correction from './Components/Correction/Correction';
 

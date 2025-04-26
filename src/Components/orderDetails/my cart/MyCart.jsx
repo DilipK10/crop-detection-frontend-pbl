@@ -1,82 +1,10 @@
-// import React, { useContext } from 'react';
-// import styles from './MyCart.module.css';
-// import { Link, useNavigate } from 'react-router-dom';
-// import { CartContext } from '../../../CartContext';
-
-// const MyCart = () => {
-//     const navigate = useNavigate();
-//     const { cart, addToCart, removeFromCart } = useContext(CartContext);
-
-//     // Handle Quantity Change
-//     const updateQuantity = (item, quantity) => {
-//         // Create a new item with updated quantity
-//         const updatedItem = { ...item, quantity: Number(quantity) };
-        
-//         // Remove the old item and add the updated one
-//         removeFromCart(item.id);
-//         addToCart(updatedItem);
-//     };
-
-//     // Calculate Total Price
-//     const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
-
-//     // Handle Checkout
-//     const handleCheckout = () => {
-//         if (cart.length === 0) {
-//             alert('Your cart is empty!');
-//             return;
-//         }
-//         navigate('/checkout');
-//     };
-
-//     return (
-//         <div className={styles.cartContainer}>
-//             <h2 className={styles.heading}>🛒 My Cart</h2>
-
-//             {cart.length === 0 ? (
-//                 <p className={styles.emptyCart}>Your cart is empty. <Link to="/">Go Shopping!</Link></p>
-//             ) : (
-//                 <div className={styles.cartItems}>
-//                     {cart.map(item => (
-//                         <div key={item.id} className={styles.cartItem}>
-//                             <img src={item.image} alt={item.name} className={styles.itemImage} />
-//                             <div className={styles.itemDetails}>
-//                                 <p className={styles.itemName}>{item.name}</p>
-//                                 <p className={styles.itemPrice}>${item.price.toFixed(2)}</p>
-//                                 {item.size && <p className={styles.itemSize}>Size: {item.size}</p>}
-//                                 <select 
-//                                     value={item.quantity} 
-//                                     onChange={(e) => updateQuantity(item, e.target.value)}
-//                                     className={styles.quantitySelector}
-//                                 >
-//                                     {[...Array(10).keys()].map(num => (
-//                                         <option key={num + 1} value={num + 1}>{num + 1}</option>
-//                                     ))}
-//                                 </select>
-//                                 <button className={styles.removeButton} onClick={() => removeFromCart(item.id)}>❌ Remove</button>
-//                             </div>
-//                         </div>
-//                     ))}
-
-//                     {/* Total Price Section */}
-//                     <div className={styles.cartSummary}>
-//                         <h3>Total: ${totalPrice}</h3>
-//                         <button className={styles.checkoutButton} onClick={handleCheckout}>
-//                             Proceed to Checkout
-//                         </button>
-//                     </div>
-//                 </div>
-//             )}
-//         </div>
-//     );
-// }
-
-// export default MyCart;
+//importing necessary libraries and styles
 import React, { useEffect, useState } from 'react';
 import styles from './MyCart.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../../../config'; // Adjust the import based on your project structure
 
+// MyCart component to display and manage the shopping cart
 const MyCart = () => {
     const navigate = useNavigate();
     const [cart, setCart] = useState([]);
@@ -86,6 +14,7 @@ const MyCart = () => {
         fetchCart();
     }, []);
 
+    // Function to fetch cart items from the backend
     const fetchCart = async () => {
         try {
             const response = await fetch(`${API_URL}/cart/view/`, {
@@ -99,6 +28,7 @@ const MyCart = () => {
 
             const data = await response.json();
 
+            // Format the cart data to match the component's state structure
             const formattedCart = data.map(item => ({
                 id: item.id,
                 productId: item.product.id,
@@ -107,7 +37,7 @@ const MyCart = () => {
                 image: item.product.images?.[0]?.image || '/default-image.png',
                 quantity: item.quantity
             }));
-            
+
 
             setCart(formattedCart);
         } catch (err) {
@@ -116,6 +46,7 @@ const MyCart = () => {
         }
     };
 
+    // Function to update the quantity of an item in the cart
     const updateQuantity = async (itemId, newQuantity) => {
         const item = cart.find(i => i.id === itemId);
         if (!item) return;
@@ -126,6 +57,7 @@ const MyCart = () => {
             )
         );
 
+        // Update the quantity in the backend
         try {
             const response = await fetch(`${API_URL}/cart/update/`, {
                 method: 'PUT',
@@ -152,6 +84,7 @@ const MyCart = () => {
         }
     };
 
+    // Function to remove an item from the cart
     const removeItem = async (itemId, productId) => {
         try {
             const response = await fetch(`${API_URL}/cart/delete/`, {
@@ -176,8 +109,10 @@ const MyCart = () => {
         }
     };
 
+    // Calculate the total price of items in the cart
     const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
 
+    // Function to handle checkout
     const handleCheckout = () => {
         if (cart.length === 0) {
             alert('Your cart is empty!');
@@ -187,19 +122,25 @@ const MyCart = () => {
     };
 
     return (
+        // Main component 
         <div className={styles.cartContainer}>
             <h2 className={styles.heading}>🛒 My Cart</h2>
 
             {cart.length === 0 ? (
                 <p className={styles.emptyCart}>Your cart is empty. <Link to="/">Go Shopping!</Link></p>
             ) : (
+                // Cart items display
                 <div className={styles.cartItems}>
                     {cart.map(item => (
+
+                        // Individual cart item display
                         <div key={item.id} className={styles.cartItem}>
                             <img src={item.image} alt={item.name} className={styles.itemImage} />
                             <div className={styles.itemDetails}>
                                 <p className={styles.itemName}>{item.name}</p>
                                 <p className={styles.itemPrice}>₹{item.price.toFixed(2)}</p>
+
+                                {/* // Quantity selector and remove button */}
                                 <select
                                     value={item.quantity}
                                     onChange={(e) => updateQuantity(item.id, e.target.value)}
@@ -209,6 +150,7 @@ const MyCart = () => {
                                         <option key={num + 1} value={num + 1}>{num + 1}</option>
                                     ))}
                                 </select>
+                                {/* // Remove button */}
                                 <button
                                     className={styles.removeButton}
                                     onClick={() => removeItem(item.id, item.productId)}
@@ -219,6 +161,7 @@ const MyCart = () => {
                         </div>
                     ))}
 
+                    {/* // Total price and checkout button */}
                     <div className={styles.cartSummary}>
                         <h3>Total: ₹{totalPrice}</h3>
                         <button className={styles.checkoutButton} onClick={handleCheckout}>

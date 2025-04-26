@@ -1,16 +1,21 @@
-.container{
+/*main cointainer */
+.container {
     padding: 5px;
     overflow: hidden;
     padding: 15px;
     position: relative;
 }
-.slide_info{
+
+/* Swiper styles */
+.slide_info {
     display: flex;
     padding: 15px;
     text-align: center;
 }
-.slideImage{
-    width:100%;
+
+/* Slide img*/
+.slideImage {
+    width: 100%;
     border-radius: 10px;
 }
 
@@ -37,5 +42,3 @@
 .swiperButtonNext:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
-
-
