@@ -1,3 +1,4 @@
+/* Main container for the upload page */
 .uploadContainer {
     padding: 2rem;
     display: flex;
@@ -11,6 +12,7 @@
     margin: 2rem auto;
 }
 
+/* Button to remove uploaded file or captured image */
 .removeBtn {
     background-color: #ff4d4f;
     color: white;
@@ -21,13 +23,14 @@
     cursor: pointer;
 }
 
-
+/* Title style */
 .title {
     font-size: 2rem;
     color: #2d5a27;
     font-weight: bold;
 }
 
+/* Label for file input */
 .inputLabel {
     background-color: #2d5a27;
     color: white;
@@ -38,20 +41,24 @@
     transition: background 0.3s;
 }
 
+/* Label hover effect */
 .inputLabel:hover {
     background-color: #3c7335;
 }
 
+/* Hide the actual file input */
 .hiddenInput {
     display: none;
 }
 
+/* Text showing uploaded file name */
 .previewText {
     color: #333;
     font-size: 1rem;
     margin-top: 0.5rem;
 }
 
+/* Video preview style for camera feed */
 .videoPreview {
     width: 100%;
     max-width: 400px;
@@ -60,6 +67,7 @@
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Common button style for capture/upload actions */
 .captureBtn {
     margin-top: 1rem;
     padding: 0.6rem 1.2rem;
@@ -72,10 +80,12 @@
     transition: background 0.3s;
 }
 
+/* Capture button hover effect */
 .captureBtn:hover {
     background-color: #3c7335;
 }
 
+/* Image preview style for captured image */
 .imagePreview {
     max-width: 300px;
     margin-top: 1rem;
