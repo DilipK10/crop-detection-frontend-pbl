@@ -1,6 +1,6 @@
 // config.js
 export const API_URL = "http://127.0.0.1:8000";
-export const API_URL = "https://b082-110-226-183-179.ngrok-free.app";
+
 
 export const USER_API = {
     LOGIN: `${API_URL}/user/login/`,
