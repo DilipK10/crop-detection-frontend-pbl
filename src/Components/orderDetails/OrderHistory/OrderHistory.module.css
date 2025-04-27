@@ -199,21 +199,23 @@
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    .orderHeader, .orderFooter {
+
+    .orderHeader,
+    .orderFooter {
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
     }
-    
+
     .orderItem {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .productImage {
         margin-bottom: 12px;
     }
-    
+
     .details {
         margin-left: 0;
     }
@@ -290,9 +292,8 @@
     border-radius: 5px;
     font-size: 14px;
     transition: background-color 0.3s ease;
-  }
-  
-  .invoiceLink:hover {
+}
+
+.invoiceLink:hover {
     background-color: #219150;
-  }
-  
+}

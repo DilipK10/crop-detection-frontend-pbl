@@ -1,98 +1,119 @@
+/*main cointainer*/
 .container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px 0;
-  padding: 20px;
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    padding: 20px;
 }
 
+/* Section Header with Navigation */
 .headerContainer {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /* padding: 0 20px; */
-  margin-bottom: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
+/* Header Title */
 .hd {
-  font-size: 24px;
-  font-family: "Quicksand", sans-serif;
-  font-weight: bold;
-  color: #333;
-  margin: 0;
-}
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px; /* Space between text and underline */
+    margin-bottom: 16px; /* Space below heading */
+  }
+  
+  .hd::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60%; /* Adjust underline width */
+    height: 3px; /* Thickness of underline */
+    background-color: #4CAF50; /* Pick your underline color */
+    border-radius: 2px;
+  }
+  
 
+/* Navigation Buttons */
 .navigationButtons {
-  display: flex;
-  gap: 10px;
+    display: flex;
+    gap: 10px;
 }
 
 .navButton {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: #f0f0f0;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  color: #333;
-  font-size: 16px;
-  font-weight: bold;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .navButton:hover {
-  background-color: #27ae60;
-  color: white;
+    background-color: #27ae60;
+    color: white;
 }
 
-.underLine{
-  width:25px;
-  height: 1px;
-  background-color: #161212;
+/* Underline for active category */
+.underLine {
+    width: 25px;
+    height: 1px;
+    background-color: #161212;
 }
 
+/* Category Grid */
 .swiper {
-  width: 100%;
-  height: auto;
-  padding: 10px 0;
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
 }
 
+/* Category Slide */
 .slide {
-  background-color: #f8f9fc; /* Light background similar to the image */
-  border-radius: 12px;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-  border: 2px solid transparent;
+    background-color: #f8f9fc;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    border: 2px solid transparent;
 }
 
 .slide:hover,
 .slide:focus {
-  border-color: #2ecc71; /* Green border on hover (matches the highlighted category) */
-  background-color: white;
+    border-color: #2ecc71;
+    background-color: white;
 }
 
+/* Category Image */
 .category_image {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  border-radius: 10px;
-  margin-bottom: 10px;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
+/* Category Name */
 .category_name {
-  font-size: 14px;
-  font-weight: bold;
-  color: #333;
-  text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
 }

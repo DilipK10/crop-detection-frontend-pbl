@@ -1,12 +1,11 @@
 *{
     margin: 0;
     padding: 0;
-    
 }
 body {
     font-family: 'Poppins', sans-serif;
 }
-/* App.module.css */
+
 .appContainer {
     min-height: 100vh;
     display: flex;
@@ -16,13 +15,13 @@ body {
 /* Main Content */
 .mainContent {
     flex: 1;
-    padding-top: 40px; /* Add padding to create space from navbar */
+    padding-top: 40px; 
     width: 100%;
 }
 
 /* Footer */
 .footer {
-    background-color: #333; /* Dark background */
+    background-color: #333; 
     color: white;
     text-align: center;
     padding: 10px 20px;
@@ -30,10 +29,7 @@ body {
     bottom: 0;
     width: 100%;
     margin-top: auto;
-    
-    z-index: 500; /* Lower than the floating button */
-    
-    
+    z-index: 500; 
 }
 
 

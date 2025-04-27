@@ -1,36 +1,43 @@
+/*main cointainer*/
 .mainContainer {
     margin-bottom: 30px;
 }
 
+/* Main container for the product section */
 .container-fluid {
-    width: 100%;
     max-width: 100%;
     margin: 0px;
     padding: 0 20px;
 }
 
 /* Section Header with Navigation */
+/* Section Header */
 .sectionHeader {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 25px;
     padding: 0;
 }
 
+/* Header Title */
 .headerTitle {
     display: flex;
     align-items: center;
+    padding-left: 0; /* REMOVE any extra left padding */
+    margin-left: 0;  /* REMOVE margin if any */
 }
 
+/* Headings */
 .hd {
     font-size: 24px;
     font-weight: bold;
     color: #333;
     margin: 0;
     position: relative;
-    padding-left: 5px;
+    padding: 0; /* REMOVE padding inside h2 */
 }
 
+/* Underline for headings */
 .hd::after {
     content: "";
     display: block;
@@ -39,19 +46,22 @@
     background-color: #27ae60;
     position: absolute;
     bottom: -8px;
-    left: 5px;
+    left: 0; /* start underline exactly from the text */
 }
+
 
 /* Product Popular - Horizontal Scrollable Row */
 .productGrid {
+    width: 100%;
     display: flex;
     flex-wrap: nowrap;
-    overflow-x: auto;
+    /* overflow-x: auto; */
     gap: 20px;
     padding-bottom: 10px;
-    scroll-snap-type: x mandatory;
+    /* scroll-snap-type: x mandatory; */
 }
 
+/* Product Thumbnail */
 .productThumb {
     flex: 0 0 auto;
     scroll-snap-align: start;
@@ -73,11 +83,27 @@
 }
 
 .topProductColumn {
+    align-items: center;
     background-color: white;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
 }
+/* Add spacing between multiple products inside TopProduct and NewArrival */
+/* .topProductColumn .products {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* CENTER the products horizontally */
+  
+
+  
+  /* Make sure product cards inside are full width */
+  .topProductColumn .productItem {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+
 
 .columnHeader {
     margin-bottom: 15px;
@@ -86,6 +112,7 @@
     text-align: left;
 }
 
+/* Column Title */
 .columnTitle {
     font-size: 20px;
     font-weight: bold;
@@ -96,6 +123,7 @@
     text-align: left;
 }
 
+/* Column Title with underline */
 .columnTitle::after {
     content: "";
     display: block;
@@ -111,6 +139,7 @@
 .productGrid::-webkit-scrollbar {
     display: none;
 }
+
 .productGrid {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -127,6 +156,7 @@
     .topProductsContainer {
         grid-template-columns: 1fr;
     }
+
     .topProductColumn {
         margin-bottom: 20px;
     }
@@ -139,6 +169,7 @@
 }
 
 @media (max-width: 576px) {
+
     .mainContainer,
     .topProductSection {
         padding: 15px;

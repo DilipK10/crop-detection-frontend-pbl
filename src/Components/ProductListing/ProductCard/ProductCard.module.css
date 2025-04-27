@@ -1,4 +1,7 @@
-.card {
+/* ============================
+    Product Card Container
+=============================== */
+/* .card {
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
@@ -9,13 +12,32 @@
     width: 220px;
     padding: 0;
     cursor: pointer;
+} */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* NEW */
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+    width: 220px;
+    height: 360px; /* NEW: Fixing a consistent height */
+    padding: 0;
+    cursor: pointer;
 }
 
+/* Hover effect: slightly lift and deeper shadow */
 .card:hover {
     transform: translateY(-6px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
+/* ============================
+    Product Image Styling
+=============================== */
 .productImage {
     width: 100%;
     height: 160px;
@@ -24,13 +46,23 @@
     border-top-right-radius: 16px;
 }
 
-.productDetails {
+/* ============================
+    Product Details Section
+=============================== */
+/* .productDetails {
     padding: 12px 14px;
     display: flex;
     flex-direction: column;
     gap: 6px;
+} */
+.productDetails {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* NEW */
+    padding: 12px 14px;
+    gap: 6px;
 }
-
+/* Product Title */
 .productName {
     font-size: 15px;
     font-weight: 600;
@@ -39,35 +71,57 @@
     transition: color 0.2s ease;
 }
 
+/* Hover effect on Product Title */
 .productName:hover {
     color: #27ae60;
 }
 
+/* Brand Name Text */
 .brandName {
     font-size: 12px;
     color: #7f8c8d;
 }
 
+/* ============================
+    Pricing Section
+=============================== */
 .priceContainer {
     display: flex;
     align-items: baseline;
     gap: 6px;
 }
 
+/* Current Price */
 .price {
     font-size: 16px;
     font-weight: bold;
     color: #27ae60;
 }
 
+/* Old Price (Optional, not used here but defined) */
 .oldPrice {
     font-size: 13px;
     color: #bdc3c7;
     text-decoration: line-through;
 }
 
-.addToCartButton {
+/* ============================
+    Add to Cart Button
+=============================== */
+/* .addToCartButton {
     margin-top: 10px;
+    padding: 8px;
+    background-color: #27ae60;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+} */
+
+.addToCartButton {
+    margin-top: auto; /* 👈 Push it to the bottom */
     padding: 8px;
     background-color: #27ae60;
     color: #fff;
@@ -78,12 +132,19 @@
     transition: background-color 0.2s ease;
 }
 
+/* Hover effect for Add to Cart Button */
 .addToCartButton:hover {
     background-color: #219653;
 }
-/* .cardGrid {
+
+/* ============================
+    Optional Grid Layout (commented)
+=============================== */
+/* 
+.cardGrid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
     padding: 20px;
-} */
+} 
+*/

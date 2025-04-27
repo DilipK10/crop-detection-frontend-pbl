@@ -1,33 +1,51 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // ✅ useNavigate instead of useHistory
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; 
 import style from './Navbar.module.css';
 import logo from '../../../assets/images/soil-monitoring.png';
 import userIcon from '../../../assets/svgs/user-solid.svg';
 import cartIcon from '../../../assets/images/cart-img.png';
 import searchIcon from '../../../assets/images/search.png';
+import { API_URL } from '../../../../config';
 
 const Navbar = () => {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [uploadedFile, setUploadedFile] = useState(null);
-    const navigate = useNavigate(); // ✅ initialize navigate
+    const [searchTerm, setSearchTerm] = useState(''); 
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate(); 
+
+    useEffect(() => {
+        const checkAuth = () => {
+            const token = localStorage.getItem('access');
+            setIsLoggedIn(!!token);
+        };
+    
+        checkAuth(); // initial check
+    
+        // Listen for storage changes (login/logout)
+        window.addEventListener('storage', checkAuth);
+    
+        // Clean up
+        return () => {
+            window.removeEventListener('storage', checkAuth);
+        };
+    }, []);
+    
+
+    const handleLogout = () => {
+        localStorage.removeItem('access');
+        localStorage.removeItem('refresh');
+        setIsLoggedIn(false);
+        navigate('/'); // Redirect to home after logout
+    };
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
-    };
-
-    const handleFileUpload = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            setUploadedFile(file);
-            console.log("Uploaded file:", file.name);
-        }
     };
 
     const handleSearchSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/search/add/', {
+            const response = await fetch(`${API_URL}/search/add/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -38,7 +56,7 @@ const Navbar = () => {
 
             if (response.ok) {
                 if (data.category) {
-                    navigate(`/products/category/${data.category}`); // ✅ replaced history.push
+                    navigate(`/products/category/${data.category}`);
                 } else {
                     console.log("No category found");
                 }
@@ -52,13 +70,11 @@ const Navbar = () => {
 
     return (
         <nav className={style.navbar}>
-            {/* Logo Section */}
             <div className={style.logoDiv}>
-                <img src={logo} className={style.logo} alt="Crop Detection Logo" />
-                <h1 className={style.hd}>Crop Disease</h1>
+                <img src={logo} className={style.logo} alt="Crop Detection Logo" /> 
+                <h1 className={style.hd}>Crop Disease</h1> 
             </div>
 
-            {/* Navigation Links */}
             <ul className={style.navLinks}>
                 <li><Link to="/" className={style.navItem}>Home</Link></li>
                 <li><Link to="/listing" className={style.navItem}>Products</Link></li>
@@ -66,12 +82,20 @@ const Navbar = () => {
                 <li><Link to="/cart" className={style.navItem}>Cart</Link></li>
             </ul>
 
-            
-
-            {/* Icons + Upload Section */}
             <div className={style.iconDiv}>
-                <Link to="/auth"><img src={userIcon} className={style.userIcon} alt="User Icon" /></Link>
-                <Link to="/cart"><img src={cartIcon} className={style.cartIcon} alt="Cart Icon" /></Link>
+                {isLoggedIn ? (
+                    <>
+                        {/* Show Logout button if logged in */}
+                        <button onClick={handleLogout} className={style.linkButton}>Logout</button>
+                    </>
+                ) : (
+                    <>
+                        {/* Show Login button if not logged in */}
+                        <Link to="/auth" className={style.linkButton}>Login</Link>
+                    </>
+                )}
+                
+                {/* Upload Scan Link */}
                 <Link to="/upload" className={style.uploadLabel}>Scan Crop</Link>
             </div>
         </nav>

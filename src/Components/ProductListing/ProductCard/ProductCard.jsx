@@ -1,125 +1,104 @@
-// import React, { useContext } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { CartContext } from "../../../CartContext";
-// import styles from "./ProductCard.module.css";
-
-// const ProductCard = ({ product }) => {
-//   const navigate = useNavigate();
-//   const { addToCart } = useContext(CartContext);
-
-//   const handleProductClick = () => {
-//     navigate(`/product/${product.id}`);
-//   };
-
-//   const handleAddToCart = (e) => {
-//     e.stopPropagation(); // Prevent triggering the card click event
-
-//     // Convert price string to number (remove $ sign)
-//     const priceValue = parseFloat(product.price.replace('$', ''));
-    
-//     const cartItem = {
-//       id: product.id,
-//       name: product.name,
-//       image: product.image,
-//       price: priceValue,
-//       quantity: 1
-//     };
-    
-//     addToCart(cartItem);
-//     alert(`${product.name} added to cart!`);
-//   };
-
-//   return (
-//     <div className={styles.card} onClick={handleProductClick} style={{ cursor: 'pointer' }}>
-//       <img src={product.image} alt={product.name} className={styles.productImage} />
-//       <div className={styles.productDetails}>
-//         <div className={styles.productName}>{product.name}</div>
-//         <p className={styles.rating}>{product.rating}</p>
-//         <div className={styles.priceContainer}>
-//           <p className={styles.price}>{product.price}</p>
-//           <p className={styles.oldPrice}>{product.oldPrice}</p>
-//         </div>  
-//         <button 
-//           className={styles.addToCartButton} 
-//           onClick={handleAddToCart}
-//         >
-//           🛒 Add to Cart
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProductCard;
+// Importing necessary React hooks and router function
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./ProductCard.module.css";
 import { API_URL } from "../../../../config";
 
+// ProductCard component definition
 const ProductCard = ({ product }) => {
-  const navigate = useNavigate();
-  const [imageUrl, setImageUrl] = useState("/static/default.jpg"); // fallback image
+    const navigate = useNavigate(); // Hook to programmatically navigate between routes
+    const [imageUrl, setImageUrl] = useState("/static/default.jpg"); // State to store the product image URL (with default fallback)
 
-  useEffect(() => {
-    if (product.images && product.images.length > 0) {
-      const rawImage = product.images[0].image;
-      const fullImage = rawImage.startsWith("http") ? rawImage : `${API_URL}${rawImage}`;
-      setImageUrl(fullImage);
-    }
-  }, [product]);
-  
-  
+    // useEffect to set the product image when component mounts or product changes
+    useEffect(() => {
+        if (product.images && product.images.length > 0) {
+            const rawImage = product.images[0].image; // Get the first image from the product's images array
+            const fullImage = rawImage.startsWith("http") 
+                ? rawImage                   // If the image URL is already absolute, use it directly
+                : `${API_URL}${rawImage}`;    // Else, prefix the API_URL to create the full path
+            setImageUrl(fullImage);            // Set the image URL in state
+        }
+    }, [product]); // Dependency array: triggers when 'product' prop changes
 
-  const handleProductClick = () => {
-    navigate(`/product/${product.id}`);
-  };
+    // Function to handle clicking on the product card - navigates to product details page
+    const handleProductClick = () => {
+        navigate(`/product/${product.id}`); // Navigate to the route with product ID
+    };
 
-  const handleAddToCart = async (e) => {
-    e.stopPropagation();
+    // Function to handle "Add to Cart" button click
+    const handleAddToCart = async (e) => {
+        e.stopPropagation(); // Prevent card click event from firing (only button click should happen)
 
-    try {
-      const response = await fetch(`${API_URL}/cart/add/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('access')}`
-        },
-        body: JSON.stringify({
-          productID: product.id,
-          quantity: 1
-        })
-      });
+        try {
+            const response = await fetch(`${API_URL}/cart/add/`, {
+                method: 'POST', // HTTP method
+                headers: {
+                    'Content-Type': 'application/json', // Telling server we are sending JSON
+                    'Authorization': `Bearer ${localStorage.getItem('access')}` // Passing JWT access token for authentication
+                },
+                body: JSON.stringify({
+                    productID: product.id, // Product ID to add
+                    quantity: 1            // Default quantity is 1
+                })
+            });
 
-      if (!response.ok) {
-        const errData = await response.json();
-        throw new Error(errData.detail || 'Failed to add to cart');
-      }
+            // If response is not OK (status code outside 200–299), throw error
+            if (!response.ok) {
+                const errData = await response.json();
+                throw new Error(errData.detail || 'Failed to add to cart');
+            }
 
-      alert(`${product.title} added to cart!`);
-    } catch (err) {
-      console.error('Add to cart error:', err);
-      alert('Failed to add product to cart');
-    }
-  };
+            // On success, show success message
+            alert(`${product.title} added to cart!`);
+        } catch (err) {
+            console.error('Add to cart error:', err); // Log the error in console
+            alert('Failed to add product to cart. Please Login ');   // Show error to user
+        }
+    };
 
-  return (
-    <div className={styles.card} onClick={handleProductClick} style={{ cursor: 'pointer' }}>
-      <img src={imageUrl} alt={product.title} className={styles.productImage} />
-      <div className={styles.productDetails}>
-        <div className={styles.productName}>{product.title}</div>
-        <p className={styles.brandName}>{product.brand_name}</p>
-        <div className={styles.priceContainer}>
-          <p className={styles.price}>₹{product.selling_price}</p>
-        </div>
-        <button 
-          className={styles.addToCartButton} 
-          onClick={handleAddToCart}
+    return (
+        <div 
+            className={styles.card} // Card container with styles
+            onClick={handleProductClick} // On card click, navigate to product detail
+            style={{ cursor: 'pointer' }} 
         >
-          🛒 Add to Cart
-        </button>
-      </div>
-    </div>
-  );
+            {/* Product Image */}
+            <img 
+                src={imageUrl} 
+                alt={product.title} 
+                className={styles.productImage} 
+            />
+
+            {/* Product Details Section */}
+            <div className={styles.productDetails}>
+                {/* Product Name */}
+                <div className={styles.productName}>
+                    {product.title}
+                </div>
+
+                {/* Brand Name */}
+                <p className={styles.brandName}>
+                    {product.brand_name}
+                </p>
+
+                {/* Pricing */}
+                <div className={styles.priceContainer}>
+                    <p className={styles.price}>
+                        ₹{product.selling_price}
+                    </p>
+                </div>
+
+                {/* Add to Cart Button */}
+                <button
+                    className={styles.addToCartButton}
+                    onClick={handleAddToCart} 
+                >
+                    🛒 Add to Cart
+                </button>
+            </div>
+        </div>
+    );
 };
+
 
 export default ProductCard;
