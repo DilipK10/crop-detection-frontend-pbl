@@ -95,11 +95,11 @@ const ConsultantDetail = () => {
     return (
         // Main component rendering the consultant details and booking functionality
         <div className={styles.consultantDetail}>
-            {/* // Consultant details card */}
+            {/*  Consultant details card */}
             <div className={styles.consultantCard}>
-                {/* // Consultant image and information */}
+                {/* Consultant image and information */}
                 <img src={consultant.image} alt={consultant.name} className={styles.consultantImage} />
-                {/* // Consultant information */}
+                {/* Consultant information */}
                 <div className={styles.consultantInfo}>
                     <h2 className={styles.consultantName}>{consultant.name}</h2>
                     <p><strong>Expertise:</strong> {consultant.expertise}</p>
@@ -107,7 +107,7 @@ const ConsultantDetail = () => {
                     <p><strong>Email:</strong> {consultant.email}</p>
                     <p><strong>Phone:</strong> {consultant.phone}</p>
                     <p><strong>Charges:</strong> ₹{consultant.starting_charges}</p>
-                    {/* // Booking button */}
+                    {/* Booking button */}
                     <div className={styles.bookingButtons}>
                         <button onClick={() => setShowDateModal(true)} className={styles.scheduleBtn}>Book Appointment</button>
                     </div>
@@ -118,7 +118,7 @@ const ConsultantDetail = () => {
             {showDateModal && (
                 // Modal for selecting date
                 <div className={styles.modal}>
-                    // Modal content
+                    
                     <div className={styles.modalContent}>
                         <h3>Select Date</h3>
                         {/* Date input field */}
@@ -128,14 +128,14 @@ const ConsultantDetail = () => {
                             value={selectedDate}
                             onChange={(e) => setSelectedDate(e.target.value)}
                         />
-                        {/* // Modal buttons for confirming or canceling */}
+                        {/* Modal buttons for confirming or canceling */}
                         <div className={styles.modalButtons}>
                             <button className={styles.confirmBtn} onClick={() => {
                                 if (!selectedDate) return alert("Select date first");
                                 setShowDateModal(false);
                                 setShowTimeModal(true);
                             }}>Next</button>
-                            {/* // Cancel button to close the modal */}
+                            {/* Cancel button to close the modal */}
                             <button className={styles.cancelBtn} onClick={() => setShowDateModal(false)}>Cancel</button>
                         </div>
                     </div>
@@ -146,7 +146,6 @@ const ConsultantDetail = () => {
             {showTimeModal && (
                 // Modal for selecting time and mode
                 <div className={styles.modal}>
-                    {/* // Modal content */}
                     <div className={styles.modalContent}>
                         <h3>Select Time & Mode</h3>
                         {/* Time input field */}
@@ -160,7 +159,7 @@ const ConsultantDetail = () => {
                         {/* Mode Selection */}
                         <div className={styles.modeToggle}>
                             <label>
-                                {/* // Radio buttons for selecting mode (Online/Offline) */}
+                                {/* Radio buttons for selecting mode (Online/Offline) */}
                                 <input
                                     type="radio"
                                     value="ONLINE"
@@ -179,7 +178,7 @@ const ConsultantDetail = () => {
                                 Offline
                             </label>
                         </div>
-                        {/* // Modal buttons for confirming or canceling */}
+                        {/* Modal buttons for confirming or canceling */}
                         <div className={styles.modalButtons}>
                             <button className={styles.confirmBtn} onClick={handleBooking}>Confirm Booking</button>
                             <button className={styles.cancelBtn} onClick={() => setShowTimeModal(false)}>Cancel</button>

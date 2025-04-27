@@ -1,7 +1,7 @@
 /* ============================
     Product Card Container
 =============================== */
-.card {
+/* .card {
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
@@ -10,6 +10,21 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     overflow: hidden;
     width: 220px;
+    padding: 0;
+    cursor: pointer;
+} */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* NEW */
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+    width: 220px;
+    height: 360px; /* NEW: Fixing a consistent height */
     padding: 0;
     cursor: pointer;
 }
@@ -34,13 +49,19 @@
 /* ============================
     Product Details Section
 =============================== */
-.productDetails {
+/* .productDetails {
     padding: 12px 14px;
     display: flex;
     flex-direction: column;
     gap: 6px;
+} */
+.productDetails {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* NEW */
+    padding: 12px 14px;
+    gap: 6px;
 }
-
 /* Product Title */
 .productName {
     font-size: 15px;
@@ -87,8 +108,20 @@
 /* ============================
     Add to Cart Button
 =============================== */
-.addToCartButton {
+/* .addToCartButton {
     margin-top: 10px;
+    padding: 8px;
+    background-color: #27ae60;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+} */
+
+.addToCartButton {
+    margin-top: auto; /* 👈 Push it to the bottom */
     padding: 8px;
     background-color: #27ae60;
     color: #fff;

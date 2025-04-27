@@ -20,11 +20,24 @@
 /* Header Title */
 .hd {
     font-size: 24px;
-    font-family: "Quicksand", sans-serif;
     font-weight: bold;
-    color: #333;
-    margin: 0;
-}
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px; /* Space between text and underline */
+    margin-bottom: 16px; /* Space below heading */
+  }
+  
+  .hd::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60%; /* Adjust underline width */
+    height: 3px; /* Thickness of underline */
+    background-color: #4CAF50; /* Pick your underline color */
+    border-radius: 2px;
+  }
+  
 
 /* Navigation Buttons */
 .navigationButtons {

@@ -79,7 +79,7 @@ const ProductDescription = () => {
             navigate("/cart"); // Redirect to cart page
         } catch (err) {
             console.error("Add to cart error:", err);
-            alert("Could not add item to cart. Please try again.");
+            alert("Could not add item to cart. Please Login .");
         }
     };
 

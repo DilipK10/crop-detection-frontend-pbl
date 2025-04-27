@@ -1,9 +1,34 @@
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ProductData.css";
-import { API_URL } from "../../../../../config";
+import {API_URL} from '../../../../../../config'
 
-const ProductData = ({ products }) => {
+const PopularProducts = () => {
+    const [popularProducts, setPopularProducts] = useState([]);
+
+    useEffect(() => {
+        const fetchPopularProducts = async () => {
+            try {
+                const response = await fetch(`${API_URL}/checkout/TopSellingProductsView/`);
+                const data = await response.json();
+                
+                // Limit only 5 products
+                const slicedData = data.slice(0, 5).map(item => ({
+                    id: item.product_id,
+                    title: item.title,
+                    image: item.first_image,
+                    brand: item.brand || "Unknown Brand",
+                    selling_price: item.selling_price,
+                }));
+
+                setPopularProducts(slicedData);
+            } catch (error) {
+                console.error("Failed to fetch top selling products:", error);
+            }
+        };
+
+        fetchPopularProducts();
+    }, []);
+
     const handleViewDetails = (id) => {
         window.location.href = `/product/${id}`;
     };
@@ -14,7 +39,7 @@ const ProductData = ({ products }) => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${localStorage.getItem("access")}`, // if using JWT
+                    Authorization: `Bearer ${localStorage.getItem("access")}`,
                 },
                 body: JSON.stringify({
                     productID: product.id,
@@ -29,18 +54,17 @@ const ProductData = ({ products }) => {
             alert(`${product.title} added to cart!`);
         } catch (error) {
             console.error("Error:", error);
-            alert("Something went wrong. Please try again.");
+            alert("Something went wrong. Please Login.");
         }
     };
 
-
     return (
         <div className="productGrid">
-            {products.map((product) => (
+            {popularProducts.map((product) => (
                 <div key={product.id} className="productThumb">
                     <div className="imgWrapper">
                         <img
-                            src={product.image}
+                            src={product.image || "https://via.placeholder.com/200"}
                             className="productImage"
                             alt={product.title}
                         />
@@ -66,5 +90,4 @@ const ProductData = ({ products }) => {
     );
 };
 
-export default ProductData;
-
+export default PopularProducts;

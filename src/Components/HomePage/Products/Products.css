@@ -11,9 +11,10 @@
 }
 
 /* Section Header with Navigation */
+/* Section Header */
 .sectionHeader {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 25px;
     padding: 0;
 }
@@ -22,18 +23,21 @@
 .headerTitle {
     display: flex;
     align-items: center;
+    padding-left: 0; /* REMOVE any extra left padding */
+    margin-left: 0;  /* REMOVE margin if any */
 }
 
-/* Header Title with underline */
+/* Headings */
 .hd {
     font-size: 24px;
     font-weight: bold;
     color: #333;
     margin: 0;
     position: relative;
-    padding-left: 5px;
+    padding: 0; /* REMOVE padding inside h2 */
 }
 
+/* Underline for headings */
 .hd::after {
     content: "";
     display: block;
@@ -42,8 +46,9 @@
     background-color: #27ae60;
     position: absolute;
     bottom: -8px;
-    left: 5px;
+    left: 0; /* start underline exactly from the text */
 }
+
 
 /* Product Popular - Horizontal Scrollable Row */
 .productGrid {
@@ -78,11 +83,26 @@
 }
 
 .topProductColumn {
+    align-items: center;
     background-color: white;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
 }
+/* Add spacing between multiple products inside TopProduct and NewArrival */
+/* .topProductColumn .products {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* CENTER the products horizontally */
+  
+
+  
+  /* Make sure product cards inside are full width */
+  .topProductColumn .productItem {
+    width: 100%;
+    max-width: 300px;
+  }
+  
 
 
 .columnHeader {

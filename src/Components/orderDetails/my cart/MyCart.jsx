@@ -42,7 +42,7 @@ const MyCart = () => {
             setCart(formattedCart);
         } catch (err) {
             console.error('Error fetching cart:', err);
-            alert('Could not load cart items');
+            // alert('Could not load cart items');
         }
     };
 

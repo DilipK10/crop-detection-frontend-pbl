@@ -52,7 +52,7 @@ const ProductCard = ({ product }) => {
             alert(`${product.title} added to cart!`);
         } catch (err) {
             console.error('Add to cart error:', err); // Log the error in console
-            alert('Failed to add product to cart');   // Show error to user
+            alert('Failed to add product to cart. Please Login ');   // Show error to user
         }
     };
 

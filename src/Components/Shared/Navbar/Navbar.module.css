@@ -177,3 +177,23 @@
         margin-top: 10px; 
     }
 }
+
+/*logout*/
+.linkButton {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 12px;
+  }
+  
+  .linkButton:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  

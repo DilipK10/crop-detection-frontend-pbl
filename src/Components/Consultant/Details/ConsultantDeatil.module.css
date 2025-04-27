@@ -308,3 +308,19 @@
         grid-template-columns: 1fr;
     }
 }
+
+.modeToggle {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* <-- Add some nice gap between radio buttons */
+    margin-top: 20px;
+}
+
+.modeToggle label {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* <-- Small gap between radio button and text */
+    font-size: 16px;
+    color: #34495e;
+    cursor: pointer;
+}
